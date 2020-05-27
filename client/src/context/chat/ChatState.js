@@ -5,6 +5,7 @@ import {
   addUserAction,
   removeUserAction,
   updateUserAction,
+  addMessageAction,
 } from './chatActions';
 
 import axios from 'axios';
@@ -12,7 +13,8 @@ import axios from 'axios';
 const ChatState = props => {
   const initialState = {
     users: [], // All online users
-    user: null, // Current user
+    user: null, // Current user,
+    messages: [], // All messages
   };
 
   const [state, dispatch] = useReducer(chatReducer, initialState);
@@ -37,12 +39,19 @@ const ChatState = props => {
     dispatch(removeUserAction());
   };
 
+  const addMessage = message => {
+    // Add message to the messages state
+    dispatch(addMessageAction(message));
+  };
+
   return (
     <ChatContext.Provider
       value={{
         user: state.user,
+        messages: state.messages,
         addUser,
         removeUser,
+        addMessage,
       }}
     >
       {props.children}

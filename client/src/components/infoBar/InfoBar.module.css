@@ -1,0 +1,25 @@
+.infoBar {
+  width: 100%;
+  background-color: rgba(255, 17, 176, 0.445);
+  margin: 0 auto;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.infoBarHeader {
+  display: inline-block;
+  width: 50%;
+  color: var(--heading-color);
+  font-size: 1.5rem;
+}
+
+.exitChatIcon {
+  width: 10%;
+  float: right;
+}
+.exitChatIcon a {
+  font-size: 1.8rem;
+  color: var(--heading-color);
+  text-decoration: none;
+}

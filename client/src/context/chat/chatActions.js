@@ -1,4 +1,4 @@
-import { ADDUSER, REMOVEUSER, UPDATEUSER } from './chatTypes';
+import { ADDUSER, REMOVEUSER, UPDATEUSER, ADDMESSAGE } from './chatTypes';
 
 // Add user
 export const addUserAction = userInfo => {
@@ -21,5 +21,13 @@ export const removeUserAction = userId => {
   return {
     type: REMOVEUSER,
     payload: userId,
+  };
+};
+
+// Add message to the messages State
+export const addMessageAction = message => {
+  return {
+    type: ADDMESSAGE,
+    payload: message,
   };
 };

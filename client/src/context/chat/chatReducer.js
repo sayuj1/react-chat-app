@@ -1,4 +1,4 @@
-import { ADDUSER, REMOVEUSER, UPDATEUSER } from './chatTypes';
+import { ADDUSER, REMOVEUSER, UPDATEUSER, ADDMESSAGE } from './chatTypes';
 
 export const chatReducer = (state, action) => {
   switch (action.type) {
@@ -6,20 +6,11 @@ export const chatReducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
-        users: [action.payload, ...state.users],
       };
     case UPDATEUSER:
       return {
         ...state,
         user: action.payload,
-        users: state.users.map(user =>
-          user.name.trim().toLowerCase() ===
-            action.payload.name.trim().toLowerCase() &&
-          user.room.trim().toLowerCase() ===
-            action.payload.room.trim().toLowerCase()
-            ? action.payload
-            : user
-        ),
       };
     case REMOVEUSER:
       return {
@@ -27,5 +18,12 @@ export const chatReducer = (state, action) => {
         user: '',
         users: state.users.filter(user => user.id != action.payload),
       };
+    case ADDMESSAGE:
+      return {
+        ...state,
+        messages: [...state.messages, action.payload],
+      };
+    default:
+      return state;
   }
 };
