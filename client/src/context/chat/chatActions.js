@@ -1,4 +1,4 @@
-import { ADDUSER, REMOVEUSER } from './chatTypes';
+import { ADDUSER, REMOVEUSER, UPDATEUSER } from './chatTypes';
 
 // Add user
 export const addUserAction = userInfo => {
@@ -8,7 +8,15 @@ export const addUserAction = userInfo => {
   };
 };
 
-// Remove User
+// Update user info
+export const updateUserAction = userInfo => {
+  return {
+    type: UPDATEUSER,
+    payload: userInfo,
+  };
+};
+
+// Remove user
 export const removeUserAction = userId => {
   return {
     type: REMOVEUSER,

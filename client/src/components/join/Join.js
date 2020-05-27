@@ -29,8 +29,9 @@ const Join = () => {
       e.preventDefault();
     }
 
+    const partialInfo = 'PARTIALINFO';
     // Joining room
-    addUser(userInfo);
+    addUser(userInfo, partialInfo);
   };
 
   return (

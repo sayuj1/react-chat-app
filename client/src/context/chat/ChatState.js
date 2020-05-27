@@ -1,25 +1,39 @@
 import React, { useReducer } from 'react';
 import ChatContext from './chatContext';
 import { chatReducer } from './chatReducer';
-import { addUserAction, removeUserAction } from './chatActions';
+import {
+  addUserAction,
+  removeUserAction,
+  updateUserAction,
+} from './chatActions';
 
 import axios from 'axios';
 
 const ChatState = props => {
   const initialState = {
     users: [], // All online users
-    user: {}, // Current user
+    user: null, // Current user
   };
 
   const [state, dispatch] = useReducer(chatReducer, initialState);
 
-  const addUser = userInfo => {
-    // If no error then add user to user state
-    dispatch(addUserAction(userInfo));
+  const addUser = (userInfo, infoType) => {
+    switch (infoType) {
+      case 'PARTIALINFO':
+        dispatch(addUserAction(userInfo));
+        break;
+      case 'FULLINFO':
+        dispatch(updateUserAction(userInfo));
+        break;
+      default:
+        dispatch(addUserAction(userInfo));
+        break;
+    }
+    // Add user to user state
   };
 
   const removeUser = () => {
-    // If no error then remove user to users state
+    // Remove user to users state
     dispatch(removeUserAction());
   };
 
