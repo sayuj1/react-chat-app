@@ -1,0 +1,8 @@
+@font-face {
+  src: url('./fonts/BalsamiqSans-Regular.ttf');
+  font-family: 'Balsamiq Sans';
+}
+
+body {
+  font-family: 'Balsamiq Sans';
+}

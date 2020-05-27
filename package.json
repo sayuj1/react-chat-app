@@ -1,0 +1,21 @@
+{
+  "name": "simple-web-chat-app",
+  "version": "1.0.0",
+  "description": "A simple web chat application that lets users to join rooms & allow users to send messages in group chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "test": "nodemon server"
+  },
+  "author": "Sayuj Sehgal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
