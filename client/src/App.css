@@ -3,6 +3,16 @@
   font-family: 'Balsamiq Sans';
 }
 
+:root {
+  --primary-color: #00005c;
+  --bg-color: #080808fa;
+  --text-color: #ffe277;
+  --heading-color: #ffb367;
+  --input-bg-color: #ffe2bc;
+  --container-bg-color: #671f912a;
+}
+
 body {
   font-family: 'Balsamiq Sans';
+  background-color: var(--bg-color);
 }

@@ -1,0 +1,77 @@
+.outerContainer {
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  background-color: var(--container-bg-color);
+  border-radius: 20px;
+}
+
+.heading {
+  color: var(--heading-color);
+  text-align: center;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+.fieldContainer {
+  margin-top: 30px;
+  height: auto;
+  text-align: center;
+}
+.inputField {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 25px;
+}
+label {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.inputField input {
+  padding: 10px;
+  background-color: var(--input-bg-color);
+  border-radius: 10px;
+}
+
+.inputField input:focus {
+  border-color: greenyellow;
+}
+
+.joinRoomBtn {
+  cursor: pointer;
+  color: rgb(210, 231, 16);
+  margin-left: 35px;
+  font-size: larger;
+  font-weight: 800;
+  border: 1px solid #15cf82fa;
+  background-color: var(--primary-color);
+  padding: 10px;
+  margin-bottom: 6%;
+  transition-property: background-color, text-decoration;
+  transition-duration: 0.5s;
+  border-radius: 10px;
+}
+
+.joinRoomBtn:hover {
+  background-color: rgb(210, 231, 16);
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.joinRoomBtn:focus {
+  background-color: rgb(216, 120, 31);
+  text-decoration: underline;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .outerContainer {
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
