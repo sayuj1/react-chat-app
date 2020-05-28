@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom';
 
 // Declaring socket
 let socket;
+
 const Chat = ({ location }) => {
   const {
     user,
@@ -99,6 +100,10 @@ const Chat = ({ location }) => {
       // message --> {user, text}
 
       addMessage(message);
+
+      // Scroll Down
+      let chatMessagesScroll = document.querySelector('.messagesContainer');
+      chatMessagesScroll.scrollTop = chatMessagesScroll.scrollHeight;
     });
 
     // Getting online users in a room

@@ -42,7 +42,7 @@
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 30px;
   margin-right: 10px;
-  background-color: rgba(231, 16, 105, 0.83);
+  background-color: rgba(235, 255, 73, 0.93);
 }
 
 .otherUser {
@@ -50,7 +50,7 @@
   /* color: var(--user-name-color); */
   float: left;
   clear: both;
-  background-color: #fff300;
+  background-color: #fff59c;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 50px;
@@ -64,7 +64,7 @@
 }
 
 .senderMessageText {
-  color: var(--sender-text-color);
+  color: #080808;
 }
 
 .receiverMessageBox {
@@ -74,7 +74,7 @@
 }
 
 .receiverMessageText {
-  color: var(--receiver-text-color);
+  color: #080808;
 }
 
 .sentText {

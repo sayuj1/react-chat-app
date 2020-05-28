@@ -5,7 +5,7 @@ import Styles from './Messages.module.css';
 
 const Messages = ({ messages, name }) => {
   return (
-    <div className={Styles.outerContainer}>
+    <div className={`${Styles.outerContainer} messagesContainer`}>
       <div className={Styles.container}>
         {messages.map((message, i) => (
           <div key={i}>
