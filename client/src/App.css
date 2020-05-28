@@ -5,13 +5,13 @@
 
 :root {
   --primary-color: #00005c;
-  --bg-color: #080808fa;
+  --bg-color: #2b2b2b;
   --text-color: #ffe277;
-  --receiver-text-color: rgb(255, 0, 106);
+  --receiver-text-color: #ffe277;
   --sender-text-color: #deff77;
   --heading-color: #ffb367;
   --input-bg-color: #ffe2bc;
-  --container-bg-color: #671f912a;
+  --container-bg-color: #2b2b2b;
   --user-name-color: #2b2b2b;
 }
 

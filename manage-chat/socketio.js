@@ -4,6 +4,7 @@ const {
   getUser,
   getUsersInRoom,
 } = require('../utils/users');
+const formatMessage = require('../utils/formatMessage');
 
 const manageChat = io => {
   // Listening for new connection
@@ -48,13 +49,16 @@ const manageChat = io => {
     // If any user sends the message
     socket.on('sendMessage', (message, callback) => {
       const user = getUser(socket.id);
-
-      // Sending message to specified the room to all connected clients including sender
-      io.to(user.room).emit('message', {
+      let newMessage = {
         user: user.name,
         text: message,
         messageType: 'MESSAGE',
-      });
+      };
+
+      // console.log('mmess ', formatMessage(newMessage));
+
+      // Sending message to specified the room to all connected clients including sender
+      io.to(user.room).emit('message', formatMessage(newMessage));
 
       // Clear the message input box
       callback();

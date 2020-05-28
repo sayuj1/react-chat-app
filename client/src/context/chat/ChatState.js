@@ -9,8 +9,6 @@ import {
   setOnlineUsersAction,
 } from './chatActions';
 
-import axios from 'axios';
-
 const ChatState = props => {
   const initialState = {
     users: [], // All online users

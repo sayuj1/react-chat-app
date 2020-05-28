@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import Styles from './Message.module.css';
-const Message = ({ message: { user, text, messageType }, name }) => {
+const Message = ({ message: { user, text, messageType, sendTime }, name }) => {
   let isSentByCurrentUser = false;
 
   const trimmedName = name.trim().toLowerCase();
@@ -29,6 +29,7 @@ const Message = ({ message: { user, text, messageType }, name }) => {
           <div className={Styles.senderMessageBox}>
             <p className={Styles.senderMessageText}>{text}</p>
           </div>
+          <div className={Styles.messageTime}>{sendTime}</div>
         </div>
       ) : (
         <div className={`${Styles.messageContainer} ${Styles.otherUser}`}>
@@ -36,6 +37,7 @@ const Message = ({ message: { user, text, messageType }, name }) => {
           <div className={Styles.receiverMessageBox}>
             <p className={Styles.receiverMessageText}>{text}</p>
           </div>
+          <div className={Styles.messageTime}>{sendTime}</div>
         </div>
       )}
     </Fragment>

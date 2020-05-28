@@ -65,6 +65,9 @@
 
 .senderMessageText {
   color: #080808;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .receiverMessageBox {
@@ -75,6 +78,9 @@
 
 .receiverMessageText {
   color: #080808;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .sentText {
@@ -83,6 +89,12 @@
   font-size: 1.2rem;
   font-weight: 600;
   display: inline;
+}
+
+.messageTime {
+  float: right;
+  margin-right: 10px;
+  color: #06193b;
 }
 
 /* Medium devices (tablets, 768px and up) */
