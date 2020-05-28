@@ -25,19 +25,19 @@ const Message = ({ message: { user, text, messageType, sendTime }, name }) => {
         </div>
       ) : isSentByCurrentUser ? (
         <div className={`${Styles.messageContainer} ${Styles.currentUser}`}>
-          <p className={Styles.sentText}>{trimmedName}</p>
+          <p className={Styles.nameOfUser}>{trimmedName}</p>
           <div className={Styles.senderMessageBox}>
             <p className={Styles.senderMessageText}>{text}</p>
           </div>
-          <div className={Styles.messageTime}>{sendTime}</div>
+          <div className={Styles.senderMessageTime}>{sendTime}</div>
         </div>
       ) : (
         <div className={`${Styles.messageContainer} ${Styles.otherUser}`}>
-          <p className={Styles.sentText}>{user}</p>
+          <p className={Styles.nameOfUser}>{user}</p>
           <div className={Styles.receiverMessageBox}>
             <p className={Styles.receiverMessageText}>{text}</p>
           </div>
-          <div className={Styles.messageTime}>{sendTime}</div>
+          <div className={Styles.receiverMessageTime}>{sendTime}</div>
         </div>
       )}
     </Fragment>

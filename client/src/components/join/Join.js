@@ -64,9 +64,7 @@ const Join = () => {
             />
           </div>
           <Link to='/chat' onClick={e => handleSubmit(e)}>
-            <button id='joinRoom' className={Styles.joinRoomBtn}>
-              Join Room
-            </button>
+            <button className={Styles.joinRoomBtn}>Join Room</button>
           </Link>
         </div>
       </div>

@@ -16,7 +16,6 @@
 
 .sendMessage:focus {
   outline: none;
-
   border-color: rgb(0, 255, 166);
   background-color: yellow;
 }

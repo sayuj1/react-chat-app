@@ -20,6 +20,13 @@
   height: auto;
   text-align: center;
 }
+
+.inputField input:focus {
+  outline: none;
+  border-color: rgb(0, 255, 166);
+  background-color: yellow;
+}
+
 .inputField {
   font-size: 1.5rem;
   color: var(--text-color);
@@ -46,7 +53,7 @@ label {
   font-size: larger;
   font-weight: 800;
   border: 1px solid #15cf82fa;
-  background-color: var(--primary-color);
+  background-color: #06193b;
   padding: 10px;
   margin-bottom: 6%;
   transition-property: background-color, text-decoration;
@@ -61,6 +68,7 @@ label {
 }
 
 .joinRoomBtn:focus {
+  border: none;
   background-color: rgb(216, 120, 31);
   text-decoration: underline;
 }

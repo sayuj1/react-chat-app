@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 
 import io from 'socket.io-client';
 import ChatContext from '../../context/chat/chatContext';
@@ -8,7 +8,7 @@ import InputMessageBox from '../inputMessageBox/InputMessageBox';
 import Messages from '../messages/Messages';
 
 import Styles from './Chat.module.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 // Declaring socket
 let socket;
@@ -25,7 +25,7 @@ const Chat = ({ location }) => {
 
   let history = useHistory();
 
-  // Send Message
+  // For sending message
   const [message, setmessage] = useState('');
 
   // Backend endpoint
@@ -51,66 +51,70 @@ const Chat = ({ location }) => {
   };
 
   useEffect(() => {
-    // Initializing the socket io instance (this will tell at the server side that a new connection is made)
-    socket = io(ENDPOINT);
+    if (user !== null) {
+      // Initializing the socket io instance (this will tell at the server side that a new connection is made)
+      socket = io(ENDPOINT);
+      // Sending user details to the socket at backend
+      socket.emit('join', user, error => {
+        if (error) {
+          alert(`${error}`);
+          // Redirecting user to homepage
+          history.push('/');
+        }
+      });
 
-    // Sending user details to the socket at backend
-    socket.emit('join', user, error => {
-      if (error) {
-        alert(`${error}`);
-        // Redirecting user to homepage
-        history.push('/');
-      }
-    });
+      // Making sure online users container visible on resize
+      window.addEventListener('resize', handleResizeWindow);
+      // On disconnecting client
+      return () => {
+        // Disconnecting our socket connection
+        socket.emit('disconnect');
 
-    // Making sure online users container visible on resize
-    window.addEventListener('resize', handleResizeWindow);
+        // Closing the current client socket
+        socket.disconnect();
 
-    // On disconnecting client
-    return () => {
-      // Disconnecting our socket connection
-      socket.emit('disconnect');
+        // Removing user from the user state
+        removeUser();
 
-      // Closing the current client socket
-      socket.disconnect();
-
-      // Removing user from the user state
-      removeUser();
-
-      // Removing resize event listener on unmounting the component
-      window.removeEventListener('resize', handleResizeWindow);
-    };
+        // Removing resize event listener on unmounting the component
+        window.removeEventListener('resize', handleResizeWindow);
+      };
+    }
   }, [ENDPOINT, location.search]);
 
   // Updating user info stored in user state at the time of login(adding socket id)
   useEffect(() => {
-    socket.on('userInfo', userData => {
-      const { userInfo } = userData;
-      const fullInfo = 'FULLINFO';
-      addUser(userInfo, fullInfo);
-    });
+    if (user !== null) {
+      socket.on('userInfo', userData => {
+        const { userInfo } = userData;
+        const fullInfo = 'FULLINFO';
+        addUser(userInfo, fullInfo);
+      });
+    }
   }, [user]);
 
   // Adding messages to the state
   useEffect(() => {
-    // Listening for message event
-    socket.on('message', message => {
-      // console.log('Inside calling it');
+    if (user !== null) {
+      // Listening for message event
+      socket.on('message', message => {
+        // console.log('Inside calling it');
 
-      // message --> {user, text}
+        // message --> {user, text}
 
-      addMessage(message);
+        addMessage(message);
 
-      // Scroll Down
-      let chatMessagesScroll = document.querySelector('.messagesContainer');
-      chatMessagesScroll.scrollTop = chatMessagesScroll.scrollHeight;
-    });
+        // Scroll Down
+        let chatMessagesScroll = document.querySelector('.messagesContainer');
+        chatMessagesScroll.scrollTop = chatMessagesScroll.scrollHeight;
+      });
 
-    // Getting online users in a room
-    socket.on('roomData', ({ users }) => {
-      // users --> array
-      setOnlineUsers(users);
-    });
+      // Getting online users in a room
+      socket.on('roomData', ({ users }) => {
+        // users --> array
+        setOnlineUsers(users);
+      });
+    }
   }, []);
 
   // Handle send message
@@ -123,7 +127,12 @@ const Chat = ({ location }) => {
     }
   };
 
-  return (
+  return user === null ? (
+    <Fragment>
+      'Page not found'
+      <Link to='/'>GoBack</Link>
+    </Fragment>
+  ) : (
     <div className={Styles.outerContainer}>
       <button
         className={Styles.showOnlineUsersBtn}

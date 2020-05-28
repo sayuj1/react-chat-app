@@ -40,7 +40,7 @@
   font-size: 1.1rem;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 50px;
-  border-bottom-left-radius: 30px;
+  /* border-bottom-left-radius: 30px; */
   margin-right: 10px;
   background-color: rgba(235, 255, 73, 0.93);
 }
@@ -52,7 +52,7 @@
   clear: both;
   background-color: #fff59c;
   border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  /* border-bottom-right-radius: 30px; */
   border-bottom-left-radius: 50px;
   margin-left: 10px;
 }
@@ -64,6 +64,7 @@
 }
 
 .senderMessageText {
+  font-size: 16px;
   color: #080808;
   display: inline-block;
   margin-top: 10px;
@@ -77,13 +78,14 @@
 }
 
 .receiverMessageText {
+  font-size: 16px;
   color: #080808;
   display: inline-block;
   margin-top: 10px;
   margin-bottom: 0;
 }
 
-.sentText {
+.nameOfUser {
   text-transform: capitalize;
   text-decoration: underline;
   font-size: 1.2rem;
@@ -91,9 +93,15 @@
   display: inline;
 }
 
-.messageTime {
+.senderMessageTime {
   float: right;
   margin-right: 10px;
+  color: #06193b;
+}
+
+.receiverMessageTime {
+  float: right;
+  /* margin-right: 10px; */
   color: #06193b;
 }
 

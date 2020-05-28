@@ -55,8 +55,6 @@ const manageChat = io => {
         messageType: 'MESSAGE',
       };
 
-      // console.log('mmess ', formatMessage(newMessage));
-
       // Sending message to specified the room to all connected clients including sender
       io.to(user.room).emit('message', formatMessage(newMessage));
 

@@ -5,7 +5,9 @@ import Styles from './InfoBar.module.css';
 const InfoBar = ({ room }) => {
   return (
     <div className={Styles.infoBar}>
-      <section className={Styles.infoBarHeader}>Room: {room}</section>
+      <section className={Styles.infoBarHeader}>
+        Room: <span className={Styles.messageRoom}>{room}</span>
+      </section>
       <section className={Styles.exitChatIcon}>
         <Link to='/'>&times;</Link>
       </section>
