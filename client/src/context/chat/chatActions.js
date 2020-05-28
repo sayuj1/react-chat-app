@@ -1,4 +1,10 @@
-import { ADDUSER, REMOVEUSER, UPDATEUSER, ADDMESSAGE } from './chatTypes';
+import {
+  ADDUSER,
+  REMOVEUSER,
+  UPDATEUSER,
+  ADDMESSAGE,
+  SETONLINEUSERS,
+} from './chatTypes';
 
 // Add user
 export const addUserAction = userInfo => {
@@ -29,5 +35,13 @@ export const addMessageAction = message => {
   return {
     type: ADDMESSAGE,
     payload: message,
+  };
+};
+
+// Adding list of online users
+export const setOnlineUsersAction = users => {
+  return {
+    type: SETONLINEUSERS,
+    payload: users,
   };
 };

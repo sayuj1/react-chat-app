@@ -1,0 +1,43 @@
+.onlineUsersDiv {
+  background-color: #fff3cd;
+  height: 100%;
+}
+
+.onlineUsersHeader {
+  height: 10%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  background-color: #fff3cd;
+  font-weight: 700;
+  height: 10%;
+}
+
+.totalOnlineUsers {
+  height: 5%;
+  background-color: #fff3cd;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding-bottom: 10px;
+}
+
+.onlineUsersNum {
+  color: rgb(255, 0, 106);
+}
+
+.onlineUsersContainer {
+  height: 85%;
+  overflow-y: auto;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .onlineUsersHeader {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    background-color: #fff3cd;
+  }
+}

@@ -13,8 +13,11 @@ const manageChat = io => {
     socket.on('join', ({ name, room }, callback) => {
       // console.log('socket id', socket.id);
       const { error, user } = addUser({ id: socket.id, name, room });
-      console.log('user', user);
-      if (error) return callback({ error });
+      // console.log('user', user);
+      if (error) return callback(error);
+
+      // Joining Room
+      socket.join(user.room);
 
       // Sending user details at client-side
       socket.emit('userInfo', { userInfo: user });
@@ -33,16 +36,13 @@ const manageChat = io => {
         messageType: 'INFOMESSAGE',
       });
 
-      // Joining Room
-      socket.join(user.room);
-
       // Getting total no. of users in the room
       io.to(user.room).emit('roomData', {
         room: user.room,
         users: getUsersInRoom(user.room),
       });
 
-      // callback({ error });
+      callback();
     });
 
     // If any user sends the message
@@ -54,12 +54,6 @@ const manageChat = io => {
         user: user.name,
         text: message,
         messageType: 'MESSAGE',
-      });
-
-      // Sending total no. of users in the room
-      io.to(user.room).emit('roomData', {
-        room: user.room,
-        users: getUsersInRoom(user.room),
       });
 
       // Clear the message input box
@@ -76,6 +70,12 @@ const manageChat = io => {
           user: user,
           text: `has left the room`,
           messageType: 'INFOMESSAGE',
+        });
+
+        // Sending total no. of users in the room
+        io.to(user.room).emit('roomData', {
+          room: user.room,
+          users: getUsersInRoom(user.room),
         });
       }
     });

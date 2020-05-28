@@ -10,9 +10,11 @@ const addUser = ({ id, name, room }) => {
     user => user.room === room && user.name === name
   );
 
+  if (!name || !room) return { error: 'Username and Room are required.' };
+
   // If username already exists
   if (existingUser) {
-    return { error: 'Username is taken' };
+    return { error: 'Username is taken.' };
   }
 
   // Creating user object

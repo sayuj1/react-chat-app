@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+
 import io from 'socket.io-client';
 import ChatContext from '../../context/chat/chatContext';
 import OnlineUsers from '../onlineUsers/OnlineUsers';
@@ -7,13 +8,21 @@ import InputMessageBox from '../inputMessageBox/InputMessageBox';
 import Messages from '../messages/Messages';
 
 import Styles from './Chat.module.css';
+import { useHistory } from 'react-router-dom';
 
 // Declaring socket
 let socket;
 const Chat = ({ location }) => {
-  const { user, addUser, removeUser, messages, addMessage } = useContext(
-    ChatContext
-  );
+  const {
+    user,
+    addUser,
+    removeUser,
+    messages,
+    addMessage,
+    setOnlineUsers,
+  } = useContext(ChatContext);
+
+  let history = useHistory();
 
   // Send Message
   const [message, setmessage] = useState('');
@@ -44,8 +53,13 @@ const Chat = ({ location }) => {
     // Initializing the socket io instance (this will tell at the server side that a new connection is made)
     socket = io(ENDPOINT);
 
-    socket.emit('join', user, ({ error }) => {
-      alert('Error', error);
+    // Sending user details to the socket at backend
+    socket.emit('join', user, error => {
+      if (error) {
+        alert(`${error}`);
+        // Redirecting user to homepage
+        history.push('/');
+      }
     });
 
     // Making sure online users container visible on resize
@@ -67,7 +81,7 @@ const Chat = ({ location }) => {
     };
   }, [ENDPOINT, location.search]);
 
-  // Updating user info (adding socket id)
+  // Updating user info stored in user state at the time of login(adding socket id)
   useEffect(() => {
     socket.on('userInfo', userData => {
       const { userInfo } = userData;
@@ -80,11 +94,17 @@ const Chat = ({ location }) => {
   useEffect(() => {
     // Listening for message event
     socket.on('message', message => {
-      console.log('Inside calling it');
+      // console.log('Inside calling it');
 
       // message --> {user, text}
 
       addMessage(message);
+    });
+
+    // Getting online users in a room
+    socket.on('roomData', ({ users }) => {
+      // users --> array
+      setOnlineUsers(users);
     });
   }, []);
 
@@ -108,12 +128,14 @@ const Chat = ({ location }) => {
       </button>
 
       <section id='onlineUsersBox' className={Styles.onlineUsersContainer}>
-        <button
-          className={Styles.closeOnlineUsersBtn}
-          onClick={handleCloseOnlineUsers}
-        >
-          &times;
-        </button>
+        <div>
+          <button
+            className={Styles.closeOnlineUsersBtn}
+            onClick={handleCloseOnlineUsers}
+          >
+            &times;
+          </button>
+        </div>
         <OnlineUsers />
       </section>
       <section className={Styles.container}>

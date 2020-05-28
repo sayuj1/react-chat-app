@@ -6,6 +6,7 @@ import {
   removeUserAction,
   updateUserAction,
   addMessageAction,
+  setOnlineUsersAction,
 } from './chatActions';
 
 import axios from 'axios';
@@ -45,14 +46,20 @@ const ChatState = props => {
     dispatch(addMessageAction(message));
   };
 
+  const setOnlineUsers = users => {
+    dispatch(setOnlineUsersAction(users));
+  };
+
   return (
     <ChatContext.Provider
       value={{
         user: state.user,
         messages: state.messages,
+        users: state.users,
         addUser,
         removeUser,
         addMessage,
+        setOnlineUsers,
       }}
     >
       {props.children}

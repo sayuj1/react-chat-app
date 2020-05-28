@@ -1,0 +1,16 @@
+.onlineUsers {
+}
+
+.usersEven,
+.usersOdd {
+  text-transform: capitalize;
+  padding: 10px;
+}
+
+.usersEven {
+  background-color: #91e43f99;
+}
+
+.usersOdd {
+  background-color: #f6f578;
+}

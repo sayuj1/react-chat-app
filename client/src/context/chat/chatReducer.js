@@ -1,4 +1,10 @@
-import { ADDUSER, REMOVEUSER, UPDATEUSER, ADDMESSAGE } from './chatTypes';
+import {
+  ADDUSER,
+  REMOVEUSER,
+  UPDATEUSER,
+  ADDMESSAGE,
+  SETONLINEUSERS,
+} from './chatTypes';
 
 export const chatReducer = (state, action) => {
   switch (action.type) {
@@ -23,10 +29,16 @@ export const chatReducer = (state, action) => {
       };
 
     case ADDMESSAGE:
-      console.log('payload ', action.payload);
+      // console.log('payload ', action.payload);
       return {
         ...state,
         messages: [...state.messages, action.payload],
+      };
+
+    case SETONLINEUSERS:
+      return {
+        ...state,
+        users: action.payload,
       };
 
     default:
