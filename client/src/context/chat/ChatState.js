@@ -41,6 +41,7 @@ const ChatState = props => {
 
   const addMessage = message => {
     // Add message to the messages state
+
     dispatch(addMessageAction(message));
   };
 

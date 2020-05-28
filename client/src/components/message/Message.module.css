@@ -1,0 +1,93 @@
+.infoMessageContainer {
+  margin: 0 auto;
+  width: 90%;
+  border: 2px solid #2b2b2b;
+  clear: both;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #d3ff67;
+  border-radius: 50px;
+  padding: 10px;
+  text-align: center;
+  height: 40px;
+}
+
+.infoUser {
+  color: rgb(255, 0, 106);
+  text-transform: capitalize;
+}
+
+.infoUserRoom {
+  color: rgb(255, 0, 106);
+  text-transform: capitalize;
+}
+
+.infoMessageText {
+  display: inline;
+}
+
+.messageContainer {
+  max-width: 70%;
+  height: auto;
+  padding: 15px;
+}
+
+.currentUser {
+  /* color: var(--user-name-color); */
+  float: right;
+  clear: both;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 30px;
+  margin-right: 10px;
+  background-color: rgba(231, 16, 105, 0.83);
+}
+
+.otherUser {
+  margin-bottom: 10px;
+  /* color: var(--user-name-color); */
+  float: left;
+  clear: both;
+  background-color: #fff300;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 50px;
+  margin-left: 10px;
+}
+
+.senderMessageBox {
+  /* padding: 10px; */
+  width: auto;
+  height: auto;
+}
+
+.senderMessageText {
+  color: var(--sender-text-color);
+}
+
+.receiverMessageBox {
+  /* padding: 10px; */
+  width: auto;
+  height: auto;
+}
+
+.receiverMessageText {
+  color: var(--receiver-text-color);
+}
+
+.sentText {
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: inline;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .infoMessageContainer {
+    width: 50%;
+  }
+}

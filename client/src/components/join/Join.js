@@ -40,7 +40,7 @@ const Join = () => {
         <h1 className={Styles.heading}>Welcome To Chatme</h1>
         <div className={Styles.fieldContainer}>
           <div className={Styles.inputField}>
-            <label for='name'>Name</label>
+            <label htmlFor='name'>Name</label>
             <input
               type='text'
               name='name'
@@ -52,7 +52,7 @@ const Join = () => {
             />
           </div>
           <div className={Styles.inputField}>
-            <label for='room'>Room</label>
+            <label htmlFor='room'>Room</label>
             <input
               type='text'
               name='room'

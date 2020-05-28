@@ -56,8 +56,8 @@ const Chat = ({ location }) => {
       // Disconnecting our socket connection
       socket.emit('disconnect');
 
-      // Turning off the current client socket
-      socket.off();
+      // Closing the current client socket
+      socket.disconnect();
 
       // Removing user from the user state
       removeUser();
@@ -80,10 +80,13 @@ const Chat = ({ location }) => {
   useEffect(() => {
     // Listening for message event
     socket.on('message', message => {
+      console.log('Inside calling it');
+
       // message --> {user, text}
+
       addMessage(message);
     });
-  }, [messages]);
+  }, []);
 
   // Handle send message
   const handleSendMessage = e => {
@@ -114,13 +117,19 @@ const Chat = ({ location }) => {
         <OnlineUsers />
       </section>
       <section className={Styles.container}>
-        <InfoBar room='Testing' />
-        <Messages />
-        <InputMessageBox
-          message={message}
-          setmessage={setmessage}
-          handleSendMessage={handleSendMessage}
-        />
+        <section className='infoBar'>
+          <InfoBar room={user.room} />
+        </section>
+        <section className={Styles.messagesContainer}>
+          <Messages messages={messages} name={user.name} />
+        </section>
+        <section className={Styles.messageInputContainer}>
+          <InputMessageBox
+            message={message}
+            setmessage={setmessage}
+            handleSendMessage={handleSendMessage}
+          />
+        </section>
       </section>
     </div>
   );

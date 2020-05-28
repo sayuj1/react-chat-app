@@ -7,9 +7,16 @@
   --primary-color: #00005c;
   --bg-color: #080808fa;
   --text-color: #ffe277;
+  --receiver-text-color: rgb(255, 0, 106);
+  --sender-text-color: #deff77;
   --heading-color: #ffb367;
   --input-bg-color: #ffe2bc;
   --container-bg-color: #671f912a;
+  --user-name-color: #2b2b2b;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {

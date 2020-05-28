@@ -1,0 +1,22 @@
+.sendMessage {
+  height: 40px;
+  width: 80%;
+  border-radius: 20px;
+  padding: 20px;
+  font-family: 'Balsamiq Sans';
+  background-color: var(--input-bg-color);
+  font-size: 1.2rem;
+}
+
+.sendBtn {
+  width: 20%;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.sendMessage:focus {
+  outline: none;
+
+  border-color: rgb(0, 255, 166);
+  background-color: yellow;
+}

@@ -7,22 +7,28 @@ export const chatReducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+
     case UPDATEUSER:
       return {
         ...state,
         user: action.payload,
       };
+
     case REMOVEUSER:
       return {
         ...state,
         user: '',
-        users: state.users.filter(user => user.id != action.payload),
+        users: state.users.filter(user => user.id !== action.payload),
+        messages: [], // removing messages on leaving chat room
       };
+
     case ADDMESSAGE:
+      console.log('payload ', action.payload);
       return {
         ...state,
         messages: [...state.messages, action.payload],
       };
+
     default:
       return state;
   }

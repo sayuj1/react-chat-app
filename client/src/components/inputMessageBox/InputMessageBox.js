@@ -1,19 +1,21 @@
 import React from 'react';
 
-import './InputMessageBox.module.css';
+import Styles from './InputMessageBox.module.css';
 
 const InputMessage = ({ message, setmessage, handleSendMessage }) => {
   return (
-    <form className='inputMessageForm'>
+    <form className={Styles.inputMessageForm}>
       <input
-        className='sendMessage'
+        className={Styles.sendMessage}
         type='text'
         placeholder='Type your message...'
         value={message}
         onChange={e => setmessage(e.target.value)}
         onKeyPress={e => (e.key === 'Enter' ? handleSendMessage(e) : null)}
       />
-      <button className='sendBtn'>Send</button>
+      <button className={Styles.sendBtn} onClick={e => handleSendMessage(e)}>
+        Send
+      </button>
     </form>
   );
 };

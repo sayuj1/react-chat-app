@@ -28,7 +28,7 @@ const removeUser = id => {
 
   if (index !== -1) {
     // Removing user from the users array and return the removed user
-    return users.split(index, 1)[0];
+    return users.splice(index, 1)[0];
   }
 };
 
