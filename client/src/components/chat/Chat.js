@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import io from 'socket.io-client';
 import ChatContext from '../../context/chat/chatContext';
@@ -6,13 +6,13 @@ import OnlineUsers from '../onlineUsers/OnlineUsers';
 import InfoBar from '../infoBar/InfoBar';
 import InputMessageBox from '../inputMessageBox/InputMessageBox';
 import Messages from '../messages/Messages';
+import Page404 from '../page404/Page404';
 
 import Styles from './Chat.module.css';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // Declaring socket
 let socket;
-let timeout = undefined;
 
 const Chat = ({ location }) => {
   const {
@@ -122,13 +122,15 @@ const Chat = ({ location }) => {
 
   // Showing typing user
   useEffect(() => {
-    socket.on('typingUser', userTyping => {
-      if (typing) {
-        document.querySelector('.typingStatus').innerHTML = userTyping;
-      } else {
-        document.querySelector('.typingStatus').innerHTML = userTyping;
-      }
-    });
+    if (user !== null) {
+      socket.on('typingUser', userTyping => {
+        if (typing) {
+          document.querySelector('.typingStatus').innerHTML = userTyping;
+        } else {
+          document.querySelector('.typingStatus').innerHTML = userTyping;
+        }
+      });
+    }
   }, [typing]);
 
   // Handling typing user
@@ -156,10 +158,7 @@ const Chat = ({ location }) => {
   };
 
   return user === null ? (
-    <Fragment>
-      'Page not found'
-      <Link to='/'>GoBack</Link>
-    </Fragment>
+    <Page404 />
   ) : (
     <div className={Styles.outerContainer}>
       <button
