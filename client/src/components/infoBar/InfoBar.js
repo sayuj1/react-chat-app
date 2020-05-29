@@ -11,6 +11,7 @@ const InfoBar = ({ room }) => {
       <section className={Styles.exitChatIcon}>
         <Link to='/'>&times;</Link>
       </section>
+      <span className={`${Styles.typingStatus} typingStatus`}></span>
     </div>
   );
 };

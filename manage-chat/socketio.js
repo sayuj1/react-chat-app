@@ -62,9 +62,21 @@ const manageChat = io => {
       callback();
     });
 
+    // Listening for typing
+    socket.on('typing', data => {
+      const user = getUser(socket.id);
+      if (data.typing == true) {
+        //broadcasting to the specified room to all clients except the current user
+        socket.broadcast
+          .to(user.room)
+          .emit('typingUser', `${user.name} is typing...`);
+      } else {
+        socket.broadcast.to(user.room).emit('typingUser', '');
+      }
+    });
+
     // Handle disconnect
     socket.on('disconnect', () => {
-      console.log('User has left');
       const user = removeUser(socket.id);
 
       if (user) {

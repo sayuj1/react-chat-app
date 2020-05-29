@@ -12,6 +12,7 @@ import { useHistory, Link } from 'react-router-dom';
 
 // Declaring socket
 let socket;
+let timeout = undefined;
 
 const Chat = ({ location }) => {
   const {
@@ -117,10 +118,37 @@ const Chat = ({ location }) => {
     }
   }, []);
 
+  const [typing, settyping] = useState(false);
+
+  // Showing typing user
+  useEffect(() => {
+    socket.on('typingUser', userTyping => {
+      if (typing) {
+        document.querySelector('.typingStatus').innerHTML = userTyping;
+      } else {
+        document.querySelector('.typingStatus').innerHTML = userTyping;
+      }
+    });
+  }, [typing]);
+
+  // Handling typing user
+  const handleTypingMessage = e => {
+    if (message) {
+      settyping(true);
+      socket.emit('typing', { typing: true });
+    } else {
+      settyping(false);
+      socket.emit('typing', { typing: false });
+    }
+  };
+
   // Handle send message
   const handleSendMessage = e => {
     e.preventDefault();
+    // console.log('key', e.key);
 
+    settyping(false);
+    socket.emit('typing', { typing: false });
     if (message) {
       // message --> 'xyz'
       socket.emit('sendMessage', message, () => setmessage(''));
@@ -153,9 +181,8 @@ const Chat = ({ location }) => {
         <OnlineUsers />
       </section>
       <section className={Styles.container}>
-        <section className='infoBar'>
-          <InfoBar room={user.room} />
-        </section>
+        <InfoBar room={user.room} />
+
         <section className={Styles.messagesContainer}>
           <Messages messages={messages} name={user.name} />
         </section>
@@ -164,6 +191,7 @@ const Chat = ({ location }) => {
             message={message}
             setmessage={setmessage}
             handleSendMessage={handleSendMessage}
+            handleTypingMessage={handleTypingMessage}
           />
         </section>
       </section>
