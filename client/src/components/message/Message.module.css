@@ -91,18 +91,22 @@
   font-size: 1.2rem;
   font-weight: 600;
   display: inline;
+  color: rgb(255, 0, 106);
 }
 
 .senderMessageTime {
+  font-size: 14px;
   float: right;
   margin-right: 10px;
-  color: #06193b;
+  color: rgb(14, 25, 158);
+  margin-top: 5px;
 }
 
 .receiverMessageTime {
+  font-size: 14px;
   float: right;
-  /* margin-right: 10px; */
-  color: #06193b;
+  color: rgb(14, 25, 158);
+  margin-top: 5px;
 }
 
 /* Medium devices (tablets, 768px and up) */
