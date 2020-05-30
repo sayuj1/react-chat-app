@@ -30,7 +30,8 @@ const Chat = ({ location }) => {
   const [message, setmessage] = useState('');
 
   // Backend endpoint
-  const ENDPOINT = 'localhost:5000';
+  // const ENDPOINT = 'localhost:5000';
+  const ENDPOINT = 'https://sayuj-react-chat-app.herokuapp.com/'
 
   // Showing online users container on large devices
   const handleResizeWindow = () => {
