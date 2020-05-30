@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react';
 
+import { getCurrentTime } from '../../utils/currentTime';
+
 import Styles from './Message.module.css';
-const Message = ({ message: { user, text, messageType, sendTime }, name }) => {
+const Message = ({ message: { user, text, messageType }, name }) => {
   let isSentByCurrentUser = false;
+  let sendTime = getCurrentTime();
 
   const trimmedName = name.trim().toLowerCase();
 

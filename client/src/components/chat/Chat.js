@@ -31,7 +31,7 @@ const Chat = ({ location }) => {
 
   // Backend endpoint
   // const ENDPOINT = 'localhost:5000';
-  const ENDPOINT = 'https://sayuj-react-chat-app.herokuapp.com/'
+  const ENDPOINT = 'https://sayuj-react-chat-app.herokuapp.com/';
 
   // Showing online users container on large devices
   const handleResizeWindow = () => {
@@ -154,6 +154,7 @@ const Chat = ({ location }) => {
     socket.emit('typing', { typing: false });
     if (message) {
       // message --> 'xyz'
+
       socket.emit('sendMessage', message, () => setmessage(''));
     }
   };
