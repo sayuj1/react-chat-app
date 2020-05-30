@@ -3,5 +3,4 @@ node_modules
 # Client node_modules
 ./client/node_modules
 
-# Config file
-./client/src/config
+
