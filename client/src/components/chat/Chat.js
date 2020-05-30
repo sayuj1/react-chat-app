@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-
+import { ENV_ENDPOINT } from '../../config/default';
 import io from 'socket.io-client';
 import ChatContext from '../../context/chat/chatContext';
 import OnlineUsers from '../onlineUsers/OnlineUsers';
@@ -16,8 +16,12 @@ let socket;
 
 const Chat = ({ location }) => {
   // Backend Endpoint
-  // let ENDPOINT = 'localhost:5000';
-  let ENDPOINT = 'https://sayuj-react-chat-app.herokuapp.com/';
+  let ENDPOINT;
+  if (process.env.NODE_ENV === 'development') {
+    ENDPOINT = ENV_ENDPOINT.DEV_POINT;
+  } else {
+    ENDPOINT = ENV_ENDPOINT.PROD_POINT;
+  }
 
   const {
     user,
