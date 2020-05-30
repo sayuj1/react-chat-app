@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "test": "nodemon server"
+    "dev": "nodemon server",
+    "client": "npm start --prefix client",
+    "test": "concurrently \"npm run dev\" \"npm run client\""
   },
   "author": "Sayuj Sehgal",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "express-validator": "^6.5.0",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {

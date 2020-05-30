@@ -15,6 +15,10 @@ import { useHistory } from 'react-router-dom';
 let socket;
 
 const Chat = ({ location }) => {
+  // Backend Endpoint
+  // let ENDPOINT = 'localhost:5000';
+  let ENDPOINT = 'https://sayuj-react-chat-app.herokuapp.com/';
+
   const {
     user,
     addUser,
@@ -28,10 +32,6 @@ const Chat = ({ location }) => {
 
   // For sending message
   const [message, setmessage] = useState('');
-
-  // Backend endpoint
-  // const ENDPOINT = 'localhost:5000';
-  const ENDPOINT = 'https://sayuj-react-chat-app.herokuapp.com/';
 
   // Showing online users container on large devices
   const handleResizeWindow = () => {
