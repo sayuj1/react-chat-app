@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import { getCurrentTime } from '../../utils/currentTime';
+import { getCurrentTime } from '../../utils/formatTime';
 
 import Styles from './Message.module.css';
 const Message = ({ message: { user, text, messageType }, name }) => {

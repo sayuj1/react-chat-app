@@ -1,0 +1,53 @@
+.loaderContainer {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  opacity: 0.9;
+}
+
+.loader {
+  text-align: center;
+  line-height: 100px;
+  /* background-color: blue; */
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 250px;
+  height: 100px;
+  z-index: 5000;
+}
+
+.loaderTxt {
+  position: absolute;
+  left: 20px;
+  display: inline-block;
+  /* background-color: pink; */
+  height: 100px;
+  width: 80px;
+  left: 10;
+}
+
+.loaderIcon {
+  display: inline-block;
+  margin: auto;
+  position: absolute;
+  /* background-color: red; */
+  height: 60px;
+  width: 60px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}

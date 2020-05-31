@@ -86,6 +86,7 @@ const Chat = ({ location }) => {
         window.removeEventListener('resize', handleResizeWindow);
       };
     }
+    // eslint-disable-next-line
   }, [ENDPOINT, location.search]);
 
   // Updating user info stored in user state at the time of login(adding socket id)
@@ -97,6 +98,7 @@ const Chat = ({ location }) => {
         addUser(userInfo, fullInfo);
       });
     }
+    // eslint-disable-next-line
   }, [user]);
 
   // Adding messages to the state
@@ -121,6 +123,7 @@ const Chat = ({ location }) => {
         setOnlineUsers(users);
       });
     }
+    // eslint-disable-next-line
   }, []);
 
   const [typing, settyping] = useState(false);
@@ -136,6 +139,7 @@ const Chat = ({ location }) => {
         }
       });
     }
+    // eslint-disable-next-line
   }, [typing]);
 
   // Handling typing user
@@ -183,6 +187,7 @@ const Chat = ({ location }) => {
             &times;
           </button>
         </div>
+
         <OnlineUsers />
       </section>
       <section className={Styles.container}>

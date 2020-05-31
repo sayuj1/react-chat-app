@@ -8,7 +8,7 @@ const Page404 = () => {
   return (
     <div className={Styles.outerContainer}>
       <div className={Styles.innerContainer}>
-        <img src={NotFoundImg} alt='404-image' className={Styles.notFoundImg} />
+        <img src={NotFoundImg} alt='404 img' className={Styles.notFoundImg} />
         <span className={Styles.goBackLink}>
           <Link to='/'>Click here to go back</Link>
         </span>

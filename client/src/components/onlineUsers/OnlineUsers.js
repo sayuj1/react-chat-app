@@ -14,6 +14,7 @@ const OnlineUsers = () => {
           Total Users:{' '}
           <span className={Styles.onlineUsersNum}>{users.length}</span>
         </div>
+
         {users.map((user, i) => (
           <div key={user.id}>
             <OnlineUser user={user.name} userNo={i} />
