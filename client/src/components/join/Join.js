@@ -1,11 +1,42 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ChatContext from '../../context/chat/chatContext';
+import { ENV_ENDPOINT } from '../../config/default';
+import io from 'socket.io-client';
 
 import Styles from './Join.module.css';
 
-const Join = () => {
-  const { addUser } = useContext(ChatContext);
+// Declaring socket
+let socket;
+
+const Join = ({ location }) => {
+  const { addUser, setOnlineRooms, rooms } = useContext(ChatContext);
+
+  // Backend Endpoint
+  let ENDPOINT;
+  if (process.env.NODE_ENV === 'development') {
+    ENDPOINT = ENV_ENDPOINT.DEV_POINT;
+  } else {
+    ENDPOINT = ENV_ENDPOINT.PROD_POINT;
+  }
+
+  useEffect(() => {
+    socket = io(ENDPOINT);
+    socket.emit('getRooms');
+
+    return () => {
+      socket.emit('disconnect');
+      socket.disconnect();
+    };
+
+    // eslint-disable-next-line
+  }, [ENDPOINT, location.search]);
+
+  useEffect(() => {
+    socket.on('rooms', rooms => {
+      setOnlineRooms(rooms);
+    });
+  }, [rooms]);
 
   // Defining State
   const [userInfo, setuserInfo] = useState({

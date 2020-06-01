@@ -7,13 +7,15 @@ import {
   updateUserAction,
   addMessageAction,
   setOnlineUsersAction,
+  setOnlineRoomsAction,
 } from './chatActions';
 
 const ChatState = props => {
   const initialState = {
     users: [], // All online users
     user: null, // Current user,
-    messages: [], // All messages
+    messages: [], // All messages,
+    rooms: [], // All active rooms
   };
 
   const [state, dispatch] = useReducer(chatReducer, initialState);
@@ -48,16 +50,25 @@ const ChatState = props => {
     dispatch(setOnlineUsersAction(users));
   };
 
+  // Setting online rooms
+  const setOnlineRooms = rooms => {
+    // const response = await axios.get('/api/rooms');
+    // const { rooms } = response.data;
+    dispatch(setOnlineRoomsAction(rooms));
+  };
+
   return (
     <ChatContext.Provider
       value={{
         user: state.user,
         messages: state.messages,
         users: state.users,
+        rooms: state.rooms,
         addUser,
         removeUser,
         addMessage,
         setOnlineUsers,
+        setOnlineRooms,
       }}
     >
       {props.children}

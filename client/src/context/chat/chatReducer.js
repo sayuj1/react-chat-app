@@ -4,6 +4,7 @@ import {
   UPDATEUSER,
   ADDMESSAGE,
   SETONLINEUSERS,
+  SETONLINEROOMS,
 } from './chatTypes';
 
 export const chatReducer = (state, action) => {
@@ -39,6 +40,11 @@ export const chatReducer = (state, action) => {
       return {
         ...state,
         users: action.payload,
+      };
+    case SETONLINEROOMS:
+      return {
+        ...state,
+        rooms: action.payload,
       };
 
     default:
