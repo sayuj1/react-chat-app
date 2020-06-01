@@ -10,7 +10,7 @@ const { addRoom, deleteRoom, getAllRooms } = require('../utils/rooms');
 const manageChat = io => {
   // Listening for new connection
   io.on('connect', socket => {
-    console.log('connection created');
+    // console.log('connection created');
 
     // Sending total no. of active rooms
     socket.on('getRooms', () => {
@@ -88,7 +88,7 @@ const manageChat = io => {
 
     // Handle disconnect
     socket.on('disconnect', () => {
-      console.log('disconnected');
+      // console.log('disconnected');
 
       const user = removeUser(socket.id);
 
@@ -110,7 +110,6 @@ const manageChat = io => {
 
         // Sending total no. of active rooms
         io.emit('rooms', getAllRooms());
-        console.log('disrooms', getAllRooms());
       }
     });
   });
