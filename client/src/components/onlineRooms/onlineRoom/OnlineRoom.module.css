@@ -1,0 +1,22 @@
+.container {
+  margin-top: 10px;
+}
+.room {
+  margin: auto;
+  text-align: left;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  padding: 10px 10px 10px 20px;
+  width: 65%;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.even {
+  background-color: #ff50e15e;
+}
+
+.odd {
+  background-color: rgb(255, 0, 106);
+}

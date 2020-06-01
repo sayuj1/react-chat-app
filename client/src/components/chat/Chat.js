@@ -30,6 +30,8 @@ const Chat = ({ location }) => {
     messages,
     addMessage,
     setOnlineUsers,
+    setOnlineRooms,
+    rooms,
   } = useContext(ChatContext);
 
   let history = useHistory();
@@ -88,6 +90,15 @@ const Chat = ({ location }) => {
     }
     // eslint-disable-next-line
   }, [ENDPOINT, location.search]);
+
+  // Setting active rooms to chat state
+  useEffect(() => {
+    if (user !== null) {
+      socket.on('rooms', rooms => {
+        setOnlineRooms(rooms);
+      });
+    }
+  }, [rooms]);
 
   // Updating user info stored in user state at the time of login(adding socket id)
   useEffect(() => {

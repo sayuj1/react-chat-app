@@ -1,6 +1,9 @@
 // Importing require modules
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
 
 // For socket io server
 const http = require('http');
@@ -15,6 +18,9 @@ const io = socketio(server);
 
 // Managing socket io connection
 manageChat(io);
+
+// Defining routes
+app.use('/api/rooms', require('./routes/api/rooms'));
 
 // Defining port for listening
 const PORT = process.env.PORT || 5000;

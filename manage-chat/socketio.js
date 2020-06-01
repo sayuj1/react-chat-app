@@ -5,17 +5,29 @@ const {
   getUsersInRoom,
 } = require('../utils/users');
 
+const { addRoom, deleteRoom, getAllRooms } = require('../utils/rooms');
 
 const manageChat = io => {
   // Listening for new connection
   io.on('connect', socket => {
-    console.log('we have a new connection');
-    // const CHATME = 'Chat Me';
+    // console.log('connection created');
+
+    // Sending total no. of active rooms
+    socket.on('getRooms', () => {
+      io.emit('rooms', getAllRooms());
+    });
+
     socket.on('join', ({ name, room }, callback) => {
       // console.log('socket id', socket.id);
       const { error, user } = addUser({ id: socket.id, name, room });
       // console.log('user', user);
       if (error) return callback(error);
+
+      // Adding Room
+      addRoom(user.room);
+
+      // Sending total no. of active rooms
+      io.emit('rooms', getAllRooms());
 
       // Joining Room
       socket.join(user.room);
@@ -37,7 +49,7 @@ const manageChat = io => {
         messageType: 'INFOMESSAGE',
       });
 
-      // Getting total no. of users in the room
+      // Sending total no. of users in the room
       io.to(user.room).emit('roomData', {
         room: user.room,
         users: getUsersInRoom(user.room),
@@ -49,7 +61,6 @@ const manageChat = io => {
     // If any user sends the message
     socket.on('sendMessage', (message, callback) => {
       const user = getUser(socket.id);
-     
 
       // Sending message to specified the room to all connected clients including sender
       io.to(user.room).emit('message', {
@@ -77,6 +88,8 @@ const manageChat = io => {
 
     // Handle disconnect
     socket.on('disconnect', () => {
+      // console.log('disconnected');
+
       const user = removeUser(socket.id);
 
       if (user) {
@@ -91,6 +104,12 @@ const manageChat = io => {
           room: user.room,
           users: getUsersInRoom(user.room),
         });
+
+        // Deleting room if no user
+        deleteRoom(user.room);
+
+        // Sending total no. of active rooms
+        io.emit('rooms', getAllRooms());
       }
     });
   });
