@@ -1,0 +1,28 @@
+.container {
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: rgba(95, 45, 54, 0.72);
+}
+.roomHeader {
+  font-size: 2rem;
+  color: var(--heading-color);
+  font-weight: 600;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.OnlineRoomsContainer {
+  text-align: center;
+  color: var(--text-color);
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+  border: 2px solid pink;
+}
+
+@media screen and (min-width: 768px) {
+  .OnlineRoomsContainer {
+    max-height: 400px;
+  }
+}

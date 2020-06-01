@@ -1,12 +1,43 @@
+.container {
+  /* background-color: red; */
+  width: 100%;
+  height: 100vh;
+}
 .outerContainer {
   width: 90%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
   border: 2px solid black;
   background-color: rgba(95, 45, 54, 0.72);
   border-radius: 20px;
+}
+
+.chatFormContainer {
+  position: relative;
+  top: 20px;
+  width: 100%;
+  border: 5px solid red;
+  height: auto;
+  width: 100%;
+}
+
+.activeRoomsContainer {
+  position: relative;
+  top: 40px;
+  width: 100%;
+  height: auto;
+  border: 5px solid yellow;
+}
+
+.onlineRoomsContainer {
+  /* background-color: blue; */
+  width: 90%;
+  position: relative;
+  min-height: 100px;
+  max-height: 300px;
+  margin: auto;
 }
 
 .heading {
@@ -76,10 +107,32 @@ label {
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
   .outerContainer {
+    width: 90%;
+    position: relative;
+  }
+
+  .chatFormContainer {
+    position: relative;
+    top: 20px;
+    width: 100%;
+    border: 5px solid red;
+    height: auto;
     width: 50%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    float: left;
+  }
+
+  .activeRoomsContainer {
+    float: left;
+    position: relative;
+    top: 20px;
+    width: 50%;
+    height: auto;
+  }
+
+  .onlineRoomsContainer {
+    width: 90%;
+    min-height: 100px;
+    max-height: 500px;
+    /* overflow: hidden; */
   }
 }
