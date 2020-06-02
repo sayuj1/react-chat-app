@@ -7,6 +7,7 @@ import InfoBar from '../infoBar/InfoBar';
 import InputMessageBox from '../inputMessageBox/InputMessageBox';
 import Messages from '../messages/Messages';
 import Page404 from '../page404/Page404';
+import { motion } from 'framer-motion';
 
 import Styles from './Chat.module.css';
 import { useHistory } from 'react-router-dom';
@@ -189,7 +190,13 @@ const Chat = ({ location }) => {
         Show
       </button>
 
-      <section id='onlineUsersBox' className={Styles.onlineUsersContainer}>
+      <motion.section
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        id='onlineUsersBox'
+        className={Styles.onlineUsersContainer}
+      >
         <div>
           <button
             className={Styles.closeOnlineUsersBtn}
@@ -200,7 +207,7 @@ const Chat = ({ location }) => {
         </div>
 
         <OnlineUsers />
-      </section>
+      </motion.section>
       <section className={Styles.container}>
         <InfoBar room={user.room} />
 
