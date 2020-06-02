@@ -16,7 +16,12 @@ const Message = ({ message: { user, text, messageType }, name }) => {
   return (
     <Fragment>
       {messageType === 'INFOMESSAGE' ? (
-        <div className={Styles.infoMessageContainer}>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className={Styles.infoMessageContainer}
+        >
           <p className={Styles.infoMessageText}>
             <span className={Styles.infoUser}>{user.name}</span>
             {', '}
@@ -25,7 +30,7 @@ const Message = ({ message: { user, text, messageType }, name }) => {
             <span className={Styles.infoUserRoom}>{user.room}</span>
             {'!'}
           </p>
-        </div>
+        </motion.div>
       ) : isSentByCurrentUser ? (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
