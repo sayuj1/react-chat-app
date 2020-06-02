@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-
 import { getCurrentTime } from '../../utils/formatTime';
+import { motion } from 'framer-motion';
 
 import Styles from './Message.module.css';
 const Message = ({ message: { user, text, messageType }, name }) => {
@@ -27,21 +27,31 @@ const Message = ({ message: { user, text, messageType }, name }) => {
           </p>
         </div>
       ) : isSentByCurrentUser ? (
-        <div className={`${Styles.messageContainer} ${Styles.currentUser}`}>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className={`${Styles.messageContainer} ${Styles.currentUser}`}
+        >
           <p className={Styles.nameOfUser}>{trimmedName}</p>
           <div className={Styles.senderMessageBox}>
             <p className={Styles.senderMessageText}>{text}</p>
           </div>
           <div className={Styles.senderMessageTime}>{sendTime}</div>
-        </div>
+        </motion.div>
       ) : (
-        <div className={`${Styles.messageContainer} ${Styles.otherUser}`}>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className={`${Styles.messageContainer} ${Styles.otherUser}`}
+        >
           <p className={Styles.nameOfUser}>{user}</p>
           <div className={Styles.receiverMessageBox}>
             <p className={Styles.receiverMessageText}>{text}</p>
           </div>
           <div className={Styles.receiverMessageTime}>{sendTime}</div>
-        </div>
+        </motion.div>
       )}
     </Fragment>
   );
