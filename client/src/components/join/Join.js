@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ChatContext from '../../context/chat/chatContext';
-import { ENV_ENDPOINT } from '../../config/default';
 import io from 'socket.io-client';
 import OnlineRooms from '../onlineRooms/OnlineRooms';
+import { setEndpoint } from './manage-join-socket-client/joinFunc';
+import {
+  initSocket,
+  disconnectSocket,
+  setRooms,
+} from './manage-join-socket-client/socketClient';
 
 import Styles from './Join.module.css';
 
@@ -14,29 +19,20 @@ const Join = ({ location }) => {
   const { addUser, setOnlineRooms, rooms } = useContext(ChatContext);
 
   // Backend Endpoint
-  let ENDPOINT;
-  if (process.env.NODE_ENV === 'development') {
-    ENDPOINT = ENV_ENDPOINT.DEV_POINT;
-  } else {
-    ENDPOINT = ENV_ENDPOINT.PROD_POINT;
-  }
+  let ENDPOINT = setEndpoint(io);
 
   useEffect(() => {
-    socket = io(ENDPOINT);
-    socket.emit('getRooms');
+    socket = initSocket(ENDPOINT, socket, io);
 
     return () => {
-      socket.emit('disconnect');
-      socket.disconnect();
+      disconnectSocket(socket);
     };
 
     // eslint-disable-next-line
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on('rooms', rooms => {
-      setOnlineRooms(rooms);
-    });
+    setRooms(socket, setOnlineRooms);
   }, [rooms]);
 
   // Defining State
@@ -47,7 +43,7 @@ const Join = ({ location }) => {
 
   // Handling form fields
   const handleChange = e => {
-    console.log(e.target);
+    // console.log(e.target);
     setuserInfo({
       ...userInfo,
       [e.target.name]: e.target.value,

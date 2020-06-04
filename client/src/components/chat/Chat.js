@@ -12,7 +12,7 @@ import {
   handleResizeWindow,
   handleShowOnlineUsers,
   handleCloseOnlineUsers,
-} from './manage-socket-client/chatFunc';
+} from './manage-chat-socket-client/chatFunc';
 
 import {
   initSocket,
@@ -24,7 +24,7 @@ import {
   setTyping,
   sendTypingMessage,
   sendMessage,
-} from './manage-socket-client/socketClient';
+} from './manage-chat-socket-client/socketClient';
 
 import Styles from './Chat.module.css';
 import { useHistory } from 'react-router-dom';
