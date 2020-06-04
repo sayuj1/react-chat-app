@@ -7,7 +7,6 @@ import { getEndpoint } from './manage-join-socket-client/joinFunc';
 import {
   initSocket,
   disconnectSocket,
-  setRooms,
 } from './manage-join-socket-client/socketClient';
 
 import Styles from './Join.module.css';
@@ -16,7 +15,7 @@ import Styles from './Join.module.css';
 let socket;
 
 const Join = ({ location }) => {
-  const { ENDPOINT, setEndPoint, addUser, setOnlineRooms, rooms } = useContext(
+  const { ENDPOINT, setEndPoint, addUser, setOnlineRooms } = useContext(
     ChatContext
   );
 
