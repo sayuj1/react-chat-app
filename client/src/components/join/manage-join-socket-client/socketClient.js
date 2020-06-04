@@ -1,6 +1,9 @@
-export const initSocket = (ENDPOINT, socket, io) => {
+export const initSocket = (ENDPOINT, socket, io, setOnlineRooms) => {
   socket = io(ENDPOINT);
   socket.emit('getRooms');
+  socket.on('rooms', rooms => {
+    setOnlineRooms(rooms);
+  });
   return socket;
 };
 
@@ -9,10 +12,4 @@ export const disconnectSocket = socket => {
     socket.emit('disconnect');
     socket.disconnect();
   }
-};
-
-export const setRooms = (socket, setOnlineRooms) => {
-  socket.on('rooms', rooms => {
-    setOnlineRooms(rooms);
-  });
 };

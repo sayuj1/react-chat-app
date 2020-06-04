@@ -23,10 +23,12 @@ const Join = ({ location }) => {
   useEffect(() => {
     // Setting Backend Endpoint
     setEndPoint(getEndpoint());
+
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    socket = initSocket(ENDPOINT, socket, io);
+    socket = initSocket(ENDPOINT, socket, io, setOnlineRooms);
 
     return () => {
       disconnectSocket(socket);
@@ -34,11 +36,6 @@ const Join = ({ location }) => {
 
     // eslint-disable-next-line
   }, [ENDPOINT, location.search]);
-
-  useEffect(() => {
-    setRooms(socket, setOnlineRooms);
-    // eslint-disable-next-line
-  }, [rooms]);
 
   // Defining State
   const [userInfo, setuserInfo] = useState({
