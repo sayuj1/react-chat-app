@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import ChatContext from './chatContext';
 import { chatReducer } from './chatReducer';
 import {
+  setEndPointAction,
   addUserAction,
   removeUserAction,
   updateUserAction,
@@ -12,6 +13,7 @@ import {
 
 const ChatState = props => {
   const initialState = {
+    ENDPOINT: null,
     users: [], // All online users
     user: null, // Current user,
     messages: [], // All messages,
@@ -19,6 +21,10 @@ const ChatState = props => {
   };
 
   const [state, dispatch] = useReducer(chatReducer, initialState);
+
+  const setEndPoint = endPoint => {
+    dispatch(setEndPointAction(endPoint));
+  };
 
   const addUser = (userInfo, infoType) => {
     switch (infoType) {
@@ -60,10 +66,12 @@ const ChatState = props => {
   return (
     <ChatContext.Provider
       value={{
+        ENDPOINT: state.ENDPOINT,
         user: state.user,
         messages: state.messages,
         users: state.users,
         rooms: state.rooms,
+        setEndPoint,
         addUser,
         removeUser,
         addMessage,

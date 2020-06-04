@@ -1,4 +1,5 @@
-export const ADDUSER = 'ADDUSER ';
+export const SETENDPOINT = 'SETENDPOINT';
+export const ADDUSER = 'ADDUSER';
 export const UPDATEUSER = 'UPDATEUSER';
 export const REMOVEUSER = 'REMOVEUSER';
 export const ADDMESSAGE = 'ADDMESSAGE';

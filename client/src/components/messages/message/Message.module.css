@@ -9,7 +9,7 @@
   border-radius: 50px;
   padding: 10px;
   text-align: center;
-  height: 40px;
+  height: auto;
 }
 
 .infoUser {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ENV_ENDPOINT } from '../../config/default';
+
 import io from 'socket.io-client';
 import ChatContext from '../../context/chat/chatContext';
 import OnlineUsers from '../onlineUsers/OnlineUsers';
@@ -7,6 +7,23 @@ import InfoBar from '../infoBar/InfoBar';
 import InputMessageBox from '../inputMessageBox/InputMessageBox';
 import Messages from '../messages/Messages';
 import Page404 from '../page404/Page404';
+import {
+  handleResizeWindow,
+  handleShowOnlineUsers,
+  handleCloseOnlineUsers,
+} from './manage-chat-socket-client/chatFunc';
+
+import {
+  initSocket,
+  disconnectSocket,
+  setRooms,
+  updateUserInfo,
+  setNewMessage,
+  setUsers,
+  setTyping,
+  sendTypingMessage,
+  sendMessage,
+} from './manage-chat-socket-client/socketClient';
 
 import Styles from './Chat.module.css';
 import { useHistory } from 'react-router-dom';
@@ -15,15 +32,8 @@ import { useHistory } from 'react-router-dom';
 let socket;
 
 const Chat = ({ location }) => {
-  // Backend Endpoint
-  let ENDPOINT;
-  if (process.env.NODE_ENV === 'development') {
-    ENDPOINT = ENV_ENDPOINT.DEV_POINT;
-  } else {
-    ENDPOINT = ENV_ENDPOINT.PROD_POINT;
-  }
-
   const {
+    ENDPOINT,
     user,
     addUser,
     removeUser,
@@ -39,101 +49,40 @@ const Chat = ({ location }) => {
   // For sending message
   const [message, setmessage] = useState('');
 
-  // Showing online users container on large devices
-  const handleResizeWindow = () => {
-    if (window.innerWidth >= '768') {
-      document.getElementById('onlineUsersBox').style.display = 'inline-block';
-    } else {
-      document.getElementById('onlineUsersBox').style.display = 'none';
-    }
-  };
-
-  // Showing online users container
-  const handleShowOnlineUsers = () => {
-    document.getElementById('onlineUsersBox').style.display = 'block';
-  };
-
-  // Hiding online users container
-  const handleCloseOnlineUsers = () => {
-    document.getElementById('onlineUsersBox').style.display = 'none';
-  };
-
   useEffect(() => {
-    if (user !== null) {
-      // Initializing the socket io instance (this will tell at the server side that a new connection is made)
-      socket = io(ENDPOINT);
-      // Sending user details to the socket at backend
-      socket.emit('join', user, error => {
-        if (error) {
-          alert(`${error}`);
-          // Redirecting user to homepage
-          history.push('/');
-        }
-      });
+    socket = initSocket(
+      ENDPOINT,
+      socket,
+      user,
+      io,
+      history,
+      handleResizeWindow
+    );
 
-      // Making sure online users container visible on resize
-      window.addEventListener('resize', handleResizeWindow);
-      // On disconnecting client
-      return () => {
-        // Disconnecting our socket connection
-        socket.emit('disconnect');
+    // On disconnecting client
+    return () => {
+      disconnectSocket(socket, removeUser, handleResizeWindow);
+    };
 
-        // Closing the current client socket
-        socket.disconnect();
-
-        // Removing user from the user state
-        removeUser();
-
-        // Removing resize event listener on unmounting the component
-        window.removeEventListener('resize', handleResizeWindow);
-      };
-    }
     // eslint-disable-next-line
   }, [ENDPOINT, location.search]);
 
   // Setting active rooms to chat state
   useEffect(() => {
-    if (user !== null) {
-      socket.on('rooms', rooms => {
-        setOnlineRooms(rooms);
-      });
-    }
+    setRooms(socket, user, setOnlineRooms);
+    // eslint-disable-next-line
   }, [rooms]);
 
   // Updating user info stored in user state at the time of login(adding socket id)
   useEffect(() => {
-    if (user !== null) {
-      socket.on('userInfo', userData => {
-        const { userInfo } = userData;
-        const fullInfo = 'FULLINFO';
-        addUser(userInfo, fullInfo);
-      });
-    }
+    updateUserInfo(socket, user, addUser);
     // eslint-disable-next-line
   }, [user]);
 
   // Adding messages to the state
   useEffect(() => {
-    if (user !== null) {
-      // Listening for message event
-      socket.on('message', message => {
-        // console.log('Inside calling it');
-
-        // message --> {user, text}
-
-        addMessage(message);
-
-        // Scroll Down
-        let chatMessagesScroll = document.querySelector('.messagesContainer');
-        chatMessagesScroll.scrollTop = chatMessagesScroll.scrollHeight;
-      });
-
-      // Getting online users in a room
-      socket.on('roomData', ({ users }) => {
-        // users --> array
-        setOnlineUsers(users);
-      });
-    }
+    setNewMessage(socket, user, addMessage);
+    setUsers(socket, user, setOnlineUsers);
     // eslint-disable-next-line
   }, []);
 
@@ -141,27 +90,13 @@ const Chat = ({ location }) => {
 
   // Showing typing user
   useEffect(() => {
-    if (user !== null) {
-      socket.on('typingUser', userTyping => {
-        if (typing) {
-          document.querySelector('.typingStatus').innerHTML = userTyping;
-        } else {
-          document.querySelector('.typingStatus').innerHTML = userTyping;
-        }
-      });
-    }
+    setTyping(socket, user, typing);
     // eslint-disable-next-line
   }, [typing]);
 
-  // Handling typing user
+  // Sending typing user to backend
   const handleTypingMessage = e => {
-    if (message) {
-      settyping(true);
-      socket.emit('typing', { typing: true });
-    } else {
-      settyping(false);
-      socket.emit('typing', { typing: false });
-    }
+    sendTypingMessage(socket, message, settyping);
   };
 
   // Handle send message
@@ -169,13 +104,7 @@ const Chat = ({ location }) => {
     e.preventDefault();
     // console.log('key', e.key);
 
-    settyping(false);
-    socket.emit('typing', { typing: false });
-    if (message) {
-      // message --> 'xyz'
-
-      socket.emit('sendMessage', message, () => setmessage(''));
-    }
+    sendMessage(socket, message, settyping, setmessage);
   };
 
   return user === null ? (

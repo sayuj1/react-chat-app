@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ChatContext from '../../context/chat/chatContext';
-import { ENV_ENDPOINT } from '../../config/default';
 import io from 'socket.io-client';
 import OnlineRooms from '../onlineRooms/OnlineRooms';
+import { getEndpoint } from './manage-join-socket-client/joinFunc';
+import {
+  initSocket,
+  disconnectSocket,
+  setRooms,
+} from './manage-join-socket-client/socketClient';
 
 import Styles from './Join.module.css';
 
@@ -11,33 +16,26 @@ import Styles from './Join.module.css';
 let socket;
 
 const Join = ({ location }) => {
-  const { addUser, setOnlineRooms, rooms } = useContext(ChatContext);
-
-  // Backend Endpoint
-  let ENDPOINT;
-  if (process.env.NODE_ENV === 'development') {
-    ENDPOINT = ENV_ENDPOINT.DEV_POINT;
-  } else {
-    ENDPOINT = ENV_ENDPOINT.PROD_POINT;
-  }
+  const { ENDPOINT, setEndPoint, addUser, setOnlineRooms, rooms } = useContext(
+    ChatContext
+  );
 
   useEffect(() => {
-    socket = io(ENDPOINT);
-    socket.emit('getRooms');
+    // Setting Backend Endpoint
+    setEndPoint(getEndpoint());
+
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    socket = initSocket(ENDPOINT, socket, io, setOnlineRooms);
 
     return () => {
-      socket.emit('disconnect');
-      socket.disconnect();
+      disconnectSocket(socket);
     };
 
     // eslint-disable-next-line
   }, [ENDPOINT, location.search]);
-
-  useEffect(() => {
-    socket.on('rooms', rooms => {
-      setOnlineRooms(rooms);
-    });
-  }, [rooms]);
 
   // Defining State
   const [userInfo, setuserInfo] = useState({
@@ -47,7 +45,7 @@ const Join = ({ location }) => {
 
   // Handling form fields
   const handleChange = e => {
-    console.log(e.target);
+    // console.log(e.target);
     setuserInfo({
       ...userInfo,
       [e.target.name]: e.target.value,

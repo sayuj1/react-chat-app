@@ -1,8 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import Join from './components/join/Join';
-// import Chat from './components/chat/Chat';
-// import Page404 from './components/page404/Page404';
 import ChatState from './context/chat/ChatState';
 import Loader from './components/loader/Loader.js';
 
