@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from '../message/Message';
+import Message from './message/Message';
 
 import Styles from './Messages.module.css';
 

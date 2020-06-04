@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from 'react';
 import ChatContext from '../../context/chat/chatContext';
-import OnlineUser from '../onlineUser/OnlineUser';
+import OnlineUser from './onlineUser/OnlineUser';
 
 import Styles from './OnlineUsers.module.css';
 

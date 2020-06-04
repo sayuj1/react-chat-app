@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { getCurrentTime } from '../../utils/formatTime';
+import { getCurrentTime } from '../../../utils/formatTime';
 import { motion } from 'framer-motion';
 
 import Styles from './Message.module.css';
