@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ChatContext from '../../context/chat/chatContext';
 import io from 'socket.io-client';
 import OnlineRooms from '../onlineRooms/OnlineRooms';
-import { setEndpoint } from './manage-join-socket-client/joinFunc';
+import { getEndpoint } from './manage-join-socket-client/joinFunc';
 import {
   initSocket,
   disconnectSocket,
@@ -16,10 +16,14 @@ import Styles from './Join.module.css';
 let socket;
 
 const Join = ({ location }) => {
-  const { addUser, setOnlineRooms, rooms } = useContext(ChatContext);
+  const { ENDPOINT, setEndPoint, addUser, setOnlineRooms, rooms } = useContext(
+    ChatContext
+  );
 
-  // Backend Endpoint
-  let ENDPOINT = setEndpoint(io);
+  useEffect(() => {
+    // Setting Backend Endpoint
+    setEndPoint(getEndpoint());
+  }, []);
 
   useEffect(() => {
     socket = initSocket(ENDPOINT, socket, io);

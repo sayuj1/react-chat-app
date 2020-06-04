@@ -8,7 +8,6 @@ import InputMessageBox from '../inputMessageBox/InputMessageBox';
 import Messages from '../messages/Messages';
 import Page404 from '../page404/Page404';
 import {
-  setEndpoint,
   handleResizeWindow,
   handleShowOnlineUsers,
   handleCloseOnlineUsers,
@@ -33,10 +32,8 @@ import { useHistory } from 'react-router-dom';
 let socket;
 
 const Chat = ({ location }) => {
-  // Backend Endpoint
-  let ENDPOINT = setEndpoint(io);
-
   const {
+    ENDPOINT,
     user,
     addUser,
     removeUser,

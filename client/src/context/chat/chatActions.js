@@ -1,4 +1,5 @@
 import {
+  SETENDPOINT,
   ADDUSER,
   REMOVEUSER,
   UPDATEUSER,
@@ -6,6 +7,14 @@ import {
   SETONLINEUSERS,
   SETONLINEROOMS,
 } from './chatTypes';
+
+// Setting Endpoint
+export const setEndPointAction = endPoint => {
+  return {
+    type: SETENDPOINT,
+    payload: endPoint,
+  };
+};
 
 // Add user
 export const addUserAction = userInfo => {

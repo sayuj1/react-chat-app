@@ -1,4 +1,5 @@
 import {
+  SETENDPOINT,
   ADDUSER,
   REMOVEUSER,
   UPDATEUSER,
@@ -9,6 +10,11 @@ import {
 
 export const chatReducer = (state, action) => {
   switch (action.type) {
+    case SETENDPOINT:
+      return {
+        ...state,
+        ENDPOINT: action.payload,
+      };
     case ADDUSER:
       return {
         ...state,
