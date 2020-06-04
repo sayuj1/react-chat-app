@@ -33,6 +33,7 @@ const Join = ({ location }) => {
 
   useEffect(() => {
     setRooms(socket, setOnlineRooms);
+    // eslint-disable-next-line
   }, [rooms]);
 
   // Defining State

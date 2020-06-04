@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ChatContext from '../../context/chat/chatContext';
 import OnlineRoom from './onlineRoom/OnlineRoom';
 

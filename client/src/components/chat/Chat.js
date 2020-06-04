@@ -73,6 +73,7 @@ const Chat = ({ location }) => {
   // Setting active rooms to chat state
   useEffect(() => {
     setRooms(socket, user, setOnlineRooms);
+    // eslint-disable-next-line
   }, [rooms]);
 
   // Updating user info stored in user state at the time of login(adding socket id)
