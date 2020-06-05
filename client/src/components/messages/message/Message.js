@@ -17,9 +17,9 @@ const Message = ({ message: { user, text, messageType }, name }) => {
     <Fragment>
       {messageType === 'INFOMESSAGE' ? (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ type: 'spring', stiffness: 150, duration: 1 }}
           className={Styles.infoMessageContainer}
         >
           <p className={Styles.infoMessageText}>
