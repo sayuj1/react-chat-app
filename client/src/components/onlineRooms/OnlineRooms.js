@@ -15,13 +15,15 @@ const OnlineRooms = () => {
         Online Room{totalRooms <= 1 ? null : <span>s</span>} - {totalRooms}
       </div>
       <div className={Styles.OnlineRoomsContainer}>
-        {totalRooms === 0 ? (
-          <h2>No Rooms Found!</h2>
-        ) : (
-          rooms.map((room, i) => (
-            <OnlineRoom key={room} room={room} index={i} />
-          ))
-        )}
+        <div className={Styles.scrollContainer}>
+          {totalRooms === 0 ? (
+            <h2>No Rooms Found!</h2>
+          ) : (
+            rooms.map((room, i) => (
+              <OnlineRoom key={room} room={room} index={i} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

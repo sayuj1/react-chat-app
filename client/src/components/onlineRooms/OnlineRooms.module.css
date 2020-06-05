@@ -17,16 +17,28 @@
   text-align: center;
   color: var(--text-color);
   max-height: 200px;
-  overflow: hidden;
-  overflow-y: auto;
+  /* overflow: hidden;
+  overflow-y: auto; */
   background-color: #06193b;
   padding: 10px;
   border-radius: 30px;
   /* border: 2px solid pink; */
 }
 
+.scrollContainer {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 170px;
+}
+
 @media screen and (min-width: 768px) {
   .OnlineRoomsContainer {
     max-height: 400px;
+  }
+
+  .scrollContainer {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 350px;
   }
 }
