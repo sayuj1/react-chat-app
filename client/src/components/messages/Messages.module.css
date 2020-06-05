@@ -1,4 +1,5 @@
 .outerContainer {
   height: 100%;
   overflow-y: auto;
+  margin-right: 5px;
 }
