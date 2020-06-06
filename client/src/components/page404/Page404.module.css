@@ -1,43 +1,95 @@
+.outerContainer {
+  background-color: white;
+  height: 100vh;
+  width: 100%;
+}
+
 .innerContainer {
   width: 100vw;
-  height: 50vh;
+  height: 280px;
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 100px;
+
   left: 0;
   right: 0;
   margin: auto;
 }
+.notFoundHeader {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  left: 5%;
+  width: 90%;
+  height: 30px;
+  color: #d063ff;
+  text-align: center;
+}
 
 .notFoundImg {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 200px;
+  margin-left: 5%;
 }
 
 .goBackLink {
-  border-radius: 10px;
+  font-size: 1.1rem;
   display: block;
-  background-color: rgb(210, 231, 16);
-  width: 50%;
-  /* height: 50%; */
+  width: 90%;
   position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
-  /* top: 0; */
+
   margin: auto;
   text-align: center;
   padding: 5px;
 }
 
 .goBackLink a {
+  font-size: 1.5rem;
   text-decoration-color: #000079;
+  color: #d063ff;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  border-radius: 10px;
+  transition: color, background-color 0.8s;
+}
+
+.goBackLink a:hover {
+  color: #f2f2f2;
+  background-color: #d063ff;
+}
+
+.goBackLink a:focus {
+  color: #f2f2f2;
+  background-color: #d063ff;
+  outline: none;
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
   .innerContainer {
     width: 60vw;
-    height: 50vh;
+    height: 400px;
+  }
+  .notFoundHeader {
+    display: inline-block;
+    font-size: 50px;
+    font-weight: 600;
+    position: relative;
+    height: 50px;
+    color: #d063ff;
+    text-align: center;
+  }
+  .notFoundImg {
+    width: 100%;
+    height: 300px;
+    margin-left: 0;
+  }
+  .goBackLink {
+    width: 50%;
   }
 }
