@@ -27,6 +27,9 @@ export const initSocket = (
 
 export const disconnectSocket = (socket, removeUser, handleResizeWindow) => {
   if (socket) {
+    // Stop typing when user left
+    socket.emit('stopTyping');
+
     // Disconnecting our socket connection
     socket.emit('disconnect');
 

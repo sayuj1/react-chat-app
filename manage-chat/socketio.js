@@ -86,6 +86,15 @@ const manageChat = io => {
       }
     });
 
+    // Stop typing when user left the room
+    socket.on('stopTyping', () => {
+      const user = getUser(socket.id);
+
+      if (user) {
+        socket.broadcast.to(user.room).emit('typingUser', '');
+      }
+    });
+
     // Handle disconnect
     socket.on('disconnect', () => {
       // console.log('disconnected');
