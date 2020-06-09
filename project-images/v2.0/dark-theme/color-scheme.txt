@@ -1,0 +1,22 @@
+heading --> #FC5185
+page-background --> #3C4151
+bg-container --> #364F6B
+input-field-label --> #F4FA9C
+input-field-placeholder --> #B6B6B6  
+list-of-online-rooms-bg-container--> #364F6B
+list-of-online-rooms-bg --> #27304E
+user-typing-msg --> #43DDE6
+sender-txt --> #EB89B5
+sender-txt-bg --> #61305D
+time --> #F4FA9C
+receiver-txt --> #FFD7E9
+receiver-txt-bg --> #433466
+msg-input-box-placeholder --> #433466
+msg-input-box-bg --> #27304E
+msg-input-box-bg::focus --> #F4FA9C
+msg-input-box-txt --> #433466
+msg-send-btn-bg --> #27304E
+msg-send-btn-txt -->#F4FA9C
+btn-bg --> #707070
+btn-txt --> #F4FA9C 
+room-header-bg --> #27304E
