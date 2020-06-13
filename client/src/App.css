@@ -1,6 +1,6 @@
-:root {
+/* :root {
   --primary-color: #00005c;
-  --bg-color: #2b2b2b;
+  --page-bg: #2b2b2b;
   --text-color: #ffe277;
   --receiver-text-color: #ffe277;
   --sender-text-color: #deff77;
@@ -8,6 +8,15 @@
   --input-bg-color: #ffe2bc;
   --container-bg-color: #2b2b2b;
   --user-name-color: #2b2b2b;
+} */
+
+:root {
+  --page-bg: #ffffff;
+  --scroll-thumb: #6c63ff;
+  --header-footer-bg: #27304e;
+  --logo-txt: #ffb9b9;
+  --nav-btn: #ffb9b9;
+  --nav-btn-hover: #20fc8f;
 }
 
 * {
@@ -15,7 +24,7 @@
 }
 
 body {
-  background-color: var(--bg-color);
+  background-color: var(--page-bg);
 }
 
 @media screen and (min-width: 768px) {
@@ -26,10 +35,10 @@ body {
   }
 
   /* Track */
-  ::-webkit-scrollbar-track {
+  /* ::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: #574b90;
-  }
+  } */
 
   /* Handle */
   ::-webkit-scrollbar-thumb {

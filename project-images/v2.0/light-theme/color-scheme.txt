@@ -1,0 +1,49 @@
+
+#landing page
+logo-txt,header-btn footer-txt -->  #ffb9b9
+header-bg, footer-bg --> #27304E
+landing-page-header-txt --> #ffd7e9
+landing-page-feature-txt --> #fc5185
+landing-page-feature-txt-bullets --> #eb89b5
+header-btn-hover --> #20FC8F
+bg-container--> #FFFFFF
+
+#login page 
+header-color --> #fc5185
+input-field --> #EB89B5
+input-field-placeholder-txt --> #707070 opacity --> 80%
+input-field-placeholder-bg --> #f2f2f2
+input-field-border --> #707070
+
+input-field-focus-bg --> #FFB9B9
+input-field-focus-txt --> #27304E
+
+join-btn-bg --> #6C63FF opacity -> 70%
+join-btn-bg-hover --> #6C63FF opacity --> 100%
+
+online-rooms-container-bg --> #F2F2F2
+online-rooms-container-border --> #707070
+online-rooms-txt --> #6C63FF
+online-rooms-txt-container-border --> #6C63FF
+
+scrollbar --> #6C63FF
+
+
+#chat-page
+online-users-container-bg --> #6C63FF opacity-->20%
+logout-btn-hover --> #DF2935
+typing-header --> #4C536A
+online-users-header--> #4C536A
+
+sender-txt --> #27304E
+sender-txt-bg --> #FC5185 opacity-->20%
+time --> #AA09EF
+
+reciever-txt --> #9E11AE
+receiver-txt-bg --> #6C63FF opacity --> 20%
+
+sender-msg-input-bg --> #FFFFFF
+sender-msg-placeholder-txt --> #707070 opacity--> 70%
+sender-msg-input-focus-bg--> #6C63FF opacity--> 30%
+sender-msg-txt --> #27304E
+

@@ -1,0 +1,58 @@
+.container {
+  background-color: var(--header-footer-bg);
+  height: 40px;
+  line-height: 40px;
+}
+
+.logoContainer,
+.joinBtnContainer {
+  display: inline-block;
+}
+
+.logoContainer {
+  margin-left: 10px;
+  height: 100%;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.logoTxt {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  color: var(--logo-txt);
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.joinBtnContainer {
+  float: right;
+  border: 2px solid transparent;
+  height: 40px;
+}
+
+.joinBtn {
+  cursor: pointer;
+  background-color: var(--nav-btn);
+  border: none;
+  margin-right: 10px;
+  font-size: 20px;
+  height: 80%;
+  width: 100px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.joinBtn:hover {
+  background-color: var(--nav-btn-hover);
+  text-decoration: underline;
+}
+
+.joinBtn:focus {
+  background-color: var(--nav-btn-hover);
+  outline: none;
+}
