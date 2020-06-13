@@ -11,12 +11,7 @@
   text-transform: capitalize;
   margin-bottom: 10px;
   overflow: auto;
-}
-
-.even {
-  background-color: #ff50e15e;
-}
-
-.odd {
-  background-color: rgb(255, 0, 106);
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+  background-color: #ffffff;
 }

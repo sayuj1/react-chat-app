@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import headerSvg from '../../images/desktop/svg-header.png';
 import chatMan from '../../images/desktop/chat-man.png';
+import footerSvg from '../../images/desktop/svg-footer.png';
 
 import Styles from './LandingPage.module.css';
 const LandingPage = () => {
@@ -31,6 +32,9 @@ const LandingPage = () => {
               </ul>
             </div>
           </div>
+        </div>
+        <div className={Styles.footerSvg}>
+          <img src={footerSvg} className={Styles.footerSvg} />
         </div>
       </div>
     </Fragment>

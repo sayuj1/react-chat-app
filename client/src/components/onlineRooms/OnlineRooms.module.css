@@ -1,25 +1,28 @@
 .container {
   border-radius: 20px;
-  border: 2px solid black;
-  background-color: rgba(95, 45, 54, 0.72);
-  padding: 20px;
+  border: 1px solid #fc5185;
+  background-color: #ffffff;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
 }
 .roomHeader {
   font-size: 2rem;
-  color: var(--heading-color);
+  color: #fc5185;
   font-weight: 600;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-align: center;
 }
 
 .OnlineRoomsContainer {
   margin-top: 20px;
   text-align: center;
-  color: var(--text-color);
+
   max-height: 200px;
   /* overflow: hidden;
   overflow-y: auto; */
-  background-color: #06193b;
+  background-color: #f2f2f2;
   padding: 10px;
   border-radius: 30px;
   /* border: 2px solid pink; */
@@ -29,6 +32,10 @@
   overflow: hidden;
   overflow-y: auto;
   max-height: 170px;
+}
+
+h2 {
+  color: #6c63ff;
 }
 
 @media screen and (min-width: 768px) {

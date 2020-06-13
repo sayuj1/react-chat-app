@@ -1,51 +1,57 @@
 .container {
   /* background-color: red; */
+  /* border: 1px solid yellow; */
   width: 100%;
-  height: 100vh;
+  /* height: 100%; */
 }
+
+.chatFormContainer {
+  position: relative;
+  top: 5px;
+  width: 100%;
+  /* border: 5px solid red; */
+  height: 45vh;
+  width: 100%;
+}
+
 .outerContainer {
   width: 90%;
   position: relative;
   left: 0;
   right: 0;
   margin: auto;
-  border: 2px solid black;
-  background-color: rgba(95, 45, 54, 0.72);
-  border-radius: 20px;
+  border: 1px solid #fc5185;
+  /* background-color: rgba(95, 45, 54, 0.72); */
+  border-radius: 10px;
 }
 
-.chatFormContainer {
-  position: relative;
-  top: 20px;
-  width: 100%;
-  /* border: 5px solid red; */
-  height: auto;
-  width: 100%;
+.heading {
+  color: #fc5185;
+  text-align: center;
+  font-size: 2rem;
+  /* text-decoration: underline; */
 }
 
 .activeRoomsContainer {
   position: relative;
-  top: 40px;
+  top: 0px;
   width: 100%;
-  height: auto;
+  height: 40vh;
   /* border: 5px solid yellow; */
+  /* overflow-y: auto; */
 }
 
 .onlineRoomsContainer {
-  /* background-color: blue; */
+  /* background-color: blue;
+   */
+  /* border: 5px solid red; */
   width: 90%;
+  height: 100%;
   position: relative;
-  min-height: 100px;
-  max-height: 300px;
+
   margin: auto;
 }
 
-.heading {
-  color: var(--heading-color);
-  text-align: center;
-  font-size: 2rem;
-  text-decoration: underline;
-}
 .fieldContainer {
   margin-top: 20px;
   height: auto;
@@ -54,37 +60,36 @@
 
 .inputField input:focus {
   outline: none;
-  border-color: rgb(0, 255, 166);
-  background-color: yellow;
+  background-color: #ffb9b9;
+  color: #27304e;
 }
 
 .inputField {
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: #eb89b5;
   margin-bottom: 25px;
 }
 label {
   margin-left: 10px;
   margin-right: 10px;
+  color: #eb89b5;
 }
 .inputField input {
   padding: 10px;
-  background-color: var(--input-bg-color);
+  background-color: #f2f2f2;
   border-radius: 10px;
-}
-
-.inputField input:focus {
-  border-color: greenyellow;
+  border: transparent;
 }
 
 .joinRoomBtn {
   cursor: pointer;
-  color: rgb(210, 231, 16);
+  color: #ffffff;
   margin-left: 35px;
   font-size: larger;
   font-weight: 800;
-  border: 1px solid #15cf82fa;
-  background-color: #06193b;
+  border: 1px solid #707070;
+  background-color: #6c63ff;
+  filter: opacity(0.7);
   padding: 10px;
   margin-bottom: 6%;
   transition-property: background-color, text-decoration;
@@ -93,14 +98,17 @@ label {
 }
 
 .joinRoomBtn:hover {
-  background-color: rgb(210, 231, 16);
-  color: var(--primary-color);
+  background-color: #6c63ff;
+  filter: opacity(1);
+
   text-decoration: underline;
 }
 
 .joinRoomBtn:focus {
+  outline: none;
   border: none;
-  background-color: rgb(216, 120, 31);
+  background-color: #6c63ff;
+  filter: opacity(1);
   text-decoration: underline;
 }
 

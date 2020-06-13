@@ -6,9 +6,9 @@ const OnlineRoom = ({ room, index }) => {
   return (
     <div className={Styles.container}>
       {index % 2 === 0 ? (
-        <div className={`${Styles.room} ${Styles.even}`}>{room}</div>
+        <div className={`${Styles.room} `}>{room}</div>
       ) : (
-        <div className={`${Styles.room} ${Styles.odd}`}>{room}</div>
+        <div className={`${Styles.room} `}>{room}</div>
       )}
     </div>
   );

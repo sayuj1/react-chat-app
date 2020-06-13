@@ -20,7 +20,7 @@
   width: 100%;
   text-transform: capitalize;
   color: var(--header-txt-color);
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .featuresTxtContainer {
@@ -52,6 +52,13 @@
   text-align: center;
 }
 
+.footerSvg {
+  position: absolute;
+  width: 100%;
+  height: 12vh;
+  bottom: 19px;
+}
+
 @media screen and (min-width: 768px) {
   .headerTxtContainer {
     font-size: 32px;
@@ -77,5 +84,8 @@
     /* border: 2px solid; */
     float: right;
     width: 50%;
+  }
+  .footerSvg {
+    height: 20vh;
   }
 }
