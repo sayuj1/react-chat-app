@@ -1,17 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import showUserIcon from '../../images/desktop/Icon material-group.png';
 
 import Styles from './InfoBar.module.css';
-const InfoBar = ({ room }) => {
+const InfoBar = ({ room, handleShowOnlineUsers }) => {
   return (
     <div className={Styles.infoBar}>
+      {/* <button
+        className={Styles.showOnlineUsersBtn}
+        onClick={handleShowOnlineUsers}
+      > */}
+      <img
+        src={showUserIcon}
+        className={Styles.showOnlineUsersBtn}
+        onClick={handleShowOnlineUsers}
+      />
+      {/* Show */}
+      {/* </button> */}
       <section className={Styles.infoBarHeader}>
         Room: <span className={Styles.messageRoom}>{room}</span>
       </section>
-      <section className={Styles.exitChatIcon}>
-        <Link to='/'>&times;</Link>
-      </section>
-      <span className={`${Styles.typingStatus} typingStatus`}></span>
+      <span className={`${Styles.typingStatus} typingStatus`}>
+        {/* <Link to='/'>&times;</Link> */}
+      </span>
+      {/* <span className={`${Styles.typingStatus} typingStatus`}></span> */}
     </div>
   );
 };

@@ -1,17 +1,15 @@
 .onlineUsers {
+  margin-top: 10px;
 }
 
-.usersEven,
-.usersOdd {
+.users {
   text-transform: capitalize;
   padding: 10px;
   line-break: anywhere;
-}
-
-.usersEven {
-  background-color: #91e43f99;
-}
-
-.usersOdd {
-  background-color: #f6f578;
+  border: 1px solid #6c63ff;
+  border-radius: 8px;
+  width: 80%;
+  margin: auto;
+  color: #6c63ff;
+  background-color: #ffffff;
 }

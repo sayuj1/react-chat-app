@@ -9,11 +9,14 @@ const OnlineUsers = () => {
   return (
     <Fragment>
       <div className={Styles.onlineUsersDiv}>
-        <div className={Styles.onlineUsersHeader}>Online Users</div>
-        <div className={Styles.totalOnlineUsers}>
+        <div className={Styles.onlineUsersHeader}>
+          Online Users
+          <span className={Styles.onlineUsersNum}> - {users.length}</span>
+        </div>
+        {/* <div className={Styles.totalOnlineUsers}>
           Total Users:{' '}
           <span className={Styles.onlineUsersNum}>{users.length}</span>
-        </div>
+        </div> */}
         <div className={Styles.onlineUsersLists}>
           {users.map((user, i) => (
             <div key={user.id}>

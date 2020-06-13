@@ -1,55 +1,77 @@
 .infoBar {
   width: 100%;
-  background-color: rgba(255, 17, 176, 0.445);
+  background-color: #39415c;
+  filter: opacity(0.9);
   margin: 0 auto;
-  height: 15%;
+  height: 50px;
   line-height: 50px;
   text-align: center;
 }
 
+.showOnlineUsersBtn {
+  top: 10px;
+  float: left;
+  width: 40px;
+  height: 30px;
+  /* line-height: 50px; */
+  position: relative;
+  left: 10px;
+}
+
 .infoBarHeader {
+  overflow: auto;
+  height: 50px;
   display: inline-block;
-  width: 50%;
-  color: var(--heading-color);
+  width: 40%;
+  color: #fc5185;
   font-size: 1.5rem;
 }
 
-.typingStatus {
+/* .typingStatus {
   color: #fff59c;
   float: left;
   padding-left: 10px;
   clear: both;
-}
+} */
 
 .messageRoom {
   text-transform: capitalize;
 }
 
-.exitChatIcon {
-  width: 10%;
+.typingStatus {
+  display: inline-block;
+  width: 35%;
   float: right;
+  /* border: 1px solid red; */
+  color: #ffd7e9;
+  overflow-y: auto;
+  height: 50px;
 }
-.exitChatIcon a {
+/* .exitChatIcon a {
   font-size: 1.8rem;
   color: var(--heading-color);
   text-decoration: none;
-}
+} */
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
   .infoBar {
     width: 100%;
-    background-color: rgba(255, 17, 176, 0.445);
+    /* background-color: rgba(255, 17, 176, 0.445); */
     margin: 0 auto;
-    height: 10%;
+    height: 50px;
     line-height: 50px;
     text-align: center;
   }
 
-  .typingStatus {
+  .showOnlineUsersBtn {
+    display: none;
+  }
+
+  /* .typingStatus {
     color: #fff59c;
     float: left;
     padding-left: 10px;
     clear: none;
-  }
+  } */
 }

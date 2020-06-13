@@ -25,6 +25,8 @@ import {
   sendMessage,
 } from './manage-chat-socket-client/socketClient';
 
+import closeIcon from '../../images/desktop/close-iconx.png';
+
 import Styles from './Chat.module.css';
 import { useHistory } from 'react-router-dom';
 
@@ -111,27 +113,28 @@ const Chat = ({ location }) => {
     <Page404 />
   ) : (
     <div className={Styles.outerContainer}>
-      <button
-        className={Styles.showOnlineUsersBtn}
-        onClick={handleShowOnlineUsers}
-      >
-        Show
-      </button>
-
       <section id='onlineUsersBox' className={Styles.onlineUsersContainer}>
         <div>
-          <button
+          {/* <button
             className={Styles.closeOnlineUsersBtn}
             onClick={handleCloseOnlineUsers}
           >
             &times;
-          </button>
+          </button> */}
+          <img
+            src={closeIcon}
+            className={Styles.closeOnlineUsersBtn}
+            onClick={handleCloseOnlineUsers}
+          />
         </div>
 
         <OnlineUsers />
       </section>
       <section className={Styles.container}>
-        <InfoBar room={user.room} />
+        <InfoBar
+          room={user.room}
+          handleShowOnlineUsers={handleShowOnlineUsers}
+        />
 
         <section className={Styles.messagesContainer}>
           <Messages messages={messages} name={user.name} />

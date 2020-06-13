@@ -25,10 +25,12 @@ const Message = ({ message: { user, text, messageType }, name }) => {
           <p className={Styles.infoMessageText}>
             <span className={Styles.infoUser}>{user.name}</span>
             {', '}
-            {text}
+            <span className={Styles.infoText}>{text}</span>
             &nbsp;
-            <span className={Styles.infoUserRoom}>{user.room}</span>
-            {'!'}
+            <span className={Styles.infoUserRoom}>
+              {user.room}
+              {'!'}
+            </span>
           </p>
         </motion.div>
       ) : isSentByCurrentUser ? (

@@ -14,8 +14,9 @@ import {
 const ChatState = props => {
   const initialState = {
     ENDPOINT: null,
+
     users: [], // All online users
-    user: null, // Current user,
+    user: null, // Current user default null,
     messages: [], // All messages,
     rooms: [], // All active rooms
   };

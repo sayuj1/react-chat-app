@@ -1,22 +1,26 @@
 .onlineUsersDiv {
-  background-color: #fff3cd;
-  height: 100vh;
+  /* background-color: #6c63ff; */
+  background-color: rgba(108, 99, 255, 0.2);
+  /* filter: opacity(0.2); */
+  height: 94vh;
 }
 
 .onlineUsersLists {
   height: 75vh;
   overflow-y: auto;
+  /* border: 2px solid red; */
 }
 
 .onlineUsersHeader {
-  height: 10%;
   padding-top: 30px;
   padding-bottom: 30px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   text-decoration: underline;
-  background-color: #fff3cd;
+  /* background-color: #fff3cd; */
+  background-color: rgba(57, 65, 92, 0.9);
   font-weight: 700;
-  height: 10%;
+  height: 80px;
+  color: #fc5185;
 }
 
 .totalOnlineUsers {
@@ -28,7 +32,7 @@
 }
 
 .onlineUsersNum {
-  color: rgb(255, 0, 106);
+  color: #fc5185;
 }
 
 .onlineUsersContainer {
@@ -39,10 +43,8 @@
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
   .onlineUsersHeader {
-    padding-top: 10px;
-    padding-bottom: 10px;
     font-size: 1.5rem;
     text-decoration: underline;
-    background-color: #fff3cd;
+    /* background-color: #fff3cd; */
   }
 }
