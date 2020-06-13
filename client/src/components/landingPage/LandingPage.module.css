@@ -1,0 +1,81 @@
+.header {
+  width: 100%;
+  height: 20vh;
+  /* border: 1px solid yellow; */
+}
+
+.headerSvg {
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+}
+
+.headerTxtContainer {
+  /* border: 2px solid yellow; */
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  padding-top: 2vh;
+  text-align: center;
+  width: 100%;
+  text-transform: capitalize;
+  color: var(--header-txt-color);
+  font-size: 24px;
+}
+
+.featuresTxtContainer {
+  /* border: 2px solid; */
+  width: 90%;
+  margin: auto;
+  height: 25vh;
+}
+
+.featuresTxtContainer h2 {
+  color: #fc5185;
+  margin-left: 1.5em;
+}
+
+.featureTxt {
+  font-size: 14px;
+  color: #fc5185;
+}
+
+.chatImgContainer {
+  margin-top: 20px;
+  height: 25vh;
+  /* border: 2px solid; */
+  text-align: center;
+}
+
+.chatImg {
+  height: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .headerTxtContainer {
+    font-size: 32px;
+  }
+  .featuresTxtContainer {
+    width: 80%;
+    /* margin: unset; */
+    /* float: left; */
+    /* clear: right; */
+  }
+
+  .featuresTxtContainer h2 {
+    font-size: 32px;
+  }
+
+  .featureTxt {
+    font-size: 24px;
+    color: #fc5185;
+  }
+
+  .chatImgContainer {
+    height: 35vh;
+    /* border: 2px solid; */
+    float: right;
+    width: 50%;
+  }
+}

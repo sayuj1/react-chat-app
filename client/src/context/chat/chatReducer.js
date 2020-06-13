@@ -30,7 +30,7 @@ export const chatReducer = (state, action) => {
     case REMOVEUSER:
       return {
         ...state,
-        user: '',
+        user: null,
         users: state.users.filter(user => user.id !== action.payload),
         messages: [], // removing messages on leaving chat room
       };

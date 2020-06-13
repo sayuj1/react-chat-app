@@ -10,6 +10,7 @@ const LandingPage = lazy(() => import('./components/landingPage/LandingPage'));
 const Join = lazy(() => import('./components/join/Join'));
 const Chat = lazy(() => import('./components/chat/Chat'));
 const Page404 = lazy(() => import('./components/page404/Page404'));
+const Footer = lazy(() => import('./components/footer/Footer'));
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route exact path='/chat' component={Chat} />
               <Route path='*' component={Page404} />
             </Switch>
+            <Footer />
           </ChatState>
         </Suspense>
       </Router>

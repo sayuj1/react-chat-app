@@ -17,6 +17,7 @@
   --logo-txt: #ffb9b9;
   --nav-btn: #ffb9b9;
   --nav-btn-hover: #20fc8f;
+  --header-txt-color: #ffd7e9;
 }
 
 * {
@@ -42,7 +43,7 @@ body {
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #a7ff83;
+    background: #6c63ff;
     border-radius: 10px;
   }
 }

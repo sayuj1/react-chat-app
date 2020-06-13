@@ -1,0 +1,26 @@
+.footerSvg {
+  position: absolute;
+  width: 100%;
+  height: 12vh;
+  bottom: 19px;
+}
+
+.footer {
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  bottom: 0;
+  background-color: #27304e;
+}
+
+.footerTxt {
+  color: #ffb9b9;
+}
+
+@media screen and (min-width: 768px) {
+  .footerSvg {
+    height: 20vh;
+  }
+}

@@ -35,6 +35,7 @@
   height: 40px;
 }
 
+.logoutBtn,
 .joinBtn {
   cursor: pointer;
   background-color: var(--nav-btn);
@@ -45,6 +46,7 @@
   width: 100px;
   transition-property: background-color;
   transition-duration: 0.5s;
+  border-radius: 4px;
 }
 
 .joinBtn:hover {
@@ -53,6 +55,11 @@
 }
 
 .joinBtn:focus {
-  background-color: var(--nav-btn-hover);
+  /* background-color: var(--nav-btn-hover); */
   outline: none;
+}
+
+.logoutBtn:hover {
+  background-color: #df2935;
+  text-decoration: underline;
 }
