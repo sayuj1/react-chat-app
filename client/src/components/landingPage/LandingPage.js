@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import headerSvg from '../../images/desktop/svg-header.png';
 import chatMan from '../../images/desktop/chat-man.png';
 import footerSvg from '../../images/desktop/svg-footer.png';
+import { motion } from 'framer-motion';
 
 import Styles from './LandingPage.module.css';
 const LandingPage = () => {
@@ -18,9 +19,14 @@ const LandingPage = () => {
           </div>
         </div>
         <div className={Styles.middleContainer}>
-          <div className={Styles.chatImgContainer}>
+          <motion.div
+            className={Styles.chatImgContainer}
+            initial={{ y: 0 }}
+            animate={{ y: 10 }}
+            transition={{ duration: 1, yoyo: Infinity }}
+          >
             <img src={chatMan} className={Styles.chatImg} />
-          </div>
+          </motion.div>
 
           <div className={Styles.featuresTxtContainer}>
             <h2>Features</h2>
