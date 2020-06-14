@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from './logo.svg';
 import ChatContext from '../../context/chat/chatContext';
@@ -13,7 +13,7 @@ const Navbar = () => {
     <Fragment>
       <div className={Styles.container}>
         <div className={Styles.logoContainer}>
-          <img src={logo} className={Styles.logo} />
+          <img src={logo} className={Styles.logo} alt='logo' />
 
           <span className={Styles.logoTxt}>ChatMe</span>
         </div>

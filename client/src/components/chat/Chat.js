@@ -98,8 +98,13 @@ const Chat = ({ location }) => {
 
   // Sending typing user to backend
   const handleTypingMessage = e => {
-    sendTypingMessage(socket, message, settyping);
+    sendTypingMessage(user, socket, message, settyping);
   };
+
+  useEffect(() => {
+    handleTypingMessage();
+    // eslint-disable-next-line
+  }, [message]);
 
   // Handle send message
   const handleSendMessage = e => {
@@ -125,6 +130,7 @@ const Chat = ({ location }) => {
             src={closeIcon}
             className={Styles.closeOnlineUsersBtn}
             onClick={handleCloseOnlineUsers}
+            alt='close-icon'
           />
         </div>
 

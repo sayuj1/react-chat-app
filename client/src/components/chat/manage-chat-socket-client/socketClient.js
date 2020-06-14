@@ -102,13 +102,15 @@ export const setTyping = (socket, user, typing) => {
 };
 
 // Handling typing user
-export const sendTypingMessage = (socket, message, settyping) => {
-  if (message) {
-    settyping(true);
-    socket.emit('typing', { typing: true });
-  } else {
-    settyping(false);
-    socket.emit('typing', { typing: false });
+export const sendTypingMessage = (user, socket, message, settyping) => {
+  if (user !== null) {
+    if (message) {
+      settyping(true);
+      socket.emit('typing', { typing: true });
+    } else {
+      settyping(false);
+      socket.emit('typing', { typing: false });
+    }
   }
 };
 

@@ -82,7 +82,9 @@ const manageChat = io => {
           .to(user.room)
           .emit('typingUser', `${user.name} is typing...`);
       } else {
-        socket.broadcast.to(user.room).emit('typingUser', '');
+        if (user) {
+          socket.broadcast.to(user.room).emit('typingUser', '');
+        }
       }
     });
 

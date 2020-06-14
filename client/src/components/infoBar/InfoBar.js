@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import showUserIcon from '../../images/desktop/Icon material-group.png';
 
 import Styles from './InfoBar.module.css';
@@ -14,6 +14,7 @@ const InfoBar = ({ room, handleShowOnlineUsers }) => {
         src={showUserIcon}
         className={Styles.showOnlineUsersBtn}
         onClick={handleShowOnlineUsers}
+        alt='group-icon'
       />
       {/* Show */}
       {/* </button> */}

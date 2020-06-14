@@ -10,7 +10,11 @@ const Page404 = () => {
     <div className={Styles.outerContainer}>
       <div className={Styles.innerContainer}>
         <span className={Styles.notFoundHeader}>Page Not Found!</span>
-        <img src={pageNotFoundImg} className={Styles.notFoundImg} />
+        <img
+          src={pageNotFoundImg}
+          className={Styles.notFoundImg}
+          alt='page-404'
+        />
         <span className={Styles.goBackLink}>
           <Link to='/'>Click here to go back</Link>
         </span>

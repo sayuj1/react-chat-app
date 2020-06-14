@@ -16,8 +16,10 @@ const InputMessage = ({
         placeholder='Type your message...'
         value={message}
         onChange={e => setmessage(e.target.value)}
-        onKeyPress={e => (e.key === 'Enter' ? handleSendMessage(e) : null)}
-        onKeyUp={e => handleTypingMessage(e)}
+        onKeyPress={e =>
+          e.key === 'Enter' ? handleSendMessage(e) : handleTypingMessage(e)
+        }
+        // onKeyUp={e => handleTypingMessage(e)}
       />
       <button className={Styles.sendBtn} onClick={e => handleSendMessage(e)}>
         Send

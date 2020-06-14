@@ -10,7 +10,7 @@ const LandingPage = () => {
     <Fragment>
       <div className={Styles.container}>
         <div className={Styles.header}>
-          <img src={headerSvg} className={Styles.headerSvg} />
+          <img src={headerSvg} className={Styles.headerSvg} alt='header-img' />
 
           <div className={Styles.headerTxtContainer}>
             <span>what is a chatMe?</span>
@@ -25,7 +25,7 @@ const LandingPage = () => {
             animate={{ y: 10 }}
             transition={{ duration: 1, yoyo: Infinity }}
           >
-            <img src={chatMan} className={Styles.chatImg} />
+            <img src={chatMan} className={Styles.chatImg} alt='chat-person' />
           </motion.div>
 
           <div className={Styles.featuresTxtContainer}>
@@ -40,7 +40,7 @@ const LandingPage = () => {
           </div>
         </div>
         <div className={Styles.footerSvg}>
-          <img src={footerSvg} className={Styles.footerSvg} />
+          <img src={footerSvg} className={Styles.footerSvg} alt='footer-img' />
         </div>
       </div>
     </Fragment>
