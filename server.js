@@ -3,12 +3,14 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-app.use(cors());
+
 
 // For socket io server
 const http = require('http');
 const socketio = require('socket.io');
 const manageChat = require('./manage-chat/socketio');
+
+app.use(cors());
 
 // Creating socket io server
 const server = http.createServer(app);
